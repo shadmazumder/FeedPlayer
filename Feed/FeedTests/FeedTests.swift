@@ -33,7 +33,22 @@ struct LocalLoader<T: Decodable>: Loader{
     }
     
     func load(completion: @escaping ((Result<APIModel, LoaderError>) -> Void)){
-        client.get(from: uri){ _ in
+        client.get(from: uri){ result in
+            switch result {
+            case let .success(data):
+                mapSuccessFrom(data, completion)
+            default:
+                completion(.failure(.resourceNotFound))
+            }
+        }
+    }
+    
+    private func mapSuccessFrom(_ data: Data, _ completion: @escaping ((Result<APIModel, LoaderError>) -> Void)) {
+        do {
+            let jsonDecoder = JSONDecoder()
+            let root = try jsonDecoder.decode(T.self, from: data)
+            completion(.success(root))
+        } catch {
             completion(.failure(.resourceNotFound))
         }
     }
@@ -56,6 +71,10 @@ class FeedClientSpy: Client {
     
     func completeWithError(_ error: Error, index: Int = 0) {
         message[index].completion(.failure(error))
+    }
+    
+    func completeWith(_ data: Data, index: Int = 0) {
+        message[index].completion(.success((data)))
     }
 }
 
@@ -86,6 +105,16 @@ class FeedTests: XCTestCase {
 
         expect(sut, tocompleteWith: .failure(LocalLoader.Error.resourceNotFound)) {
             client.completeWithError(anyError)
+        }
+    }
+    
+    func test_load_deliversEmptyItems_ForEmptyJSON() {
+        let (sut, client) = makeSUT()
+        let emptyEntities = ""
+
+        expect(sut, tocompleteWith: .success("")) {
+            let data = try! JSONEncoder().encode(emptyEntities)
+            client.completeWith(data)
         }
     }
     
