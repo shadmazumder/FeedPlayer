@@ -1,6 +1,6 @@
 //
-//  FeedTests.swift
-//  FeedTests
+//  LocalLoaderTests.swift
+//  LocalLoaderTests
 //
 //  Created by Shad Mazumder on 23/1/22.
 //
@@ -78,7 +78,7 @@ class FeedClientSpy: Client {
     }
 }
 
-class FeedTests: XCTestCase {
+class LocalLoaderTests: XCTestCase {
     func test_init_doesNotInitiateRequest() {
         let (_, client) = makeSUT()
         XCTAssertTrue(client.requestedURI.isEmpty)
