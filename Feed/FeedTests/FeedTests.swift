@@ -11,7 +11,7 @@ protocol Loader {
     func load()
 }
 
-struct LocalFeedLoader: Loader{
+struct LocalLoader: Loader{
     private let uri: String
     private let client: FeedClient
     
@@ -63,9 +63,9 @@ class FeedTests: XCTestCase {
 //    }
     
     // MARK: - Helper
-    private func makeSUT(_ uri: String = "") -> (sut: LocalFeedLoader, client: FeedClientSpy){
+    private func makeSUT(_ uri: String = "") -> (sut: LocalLoader, client: FeedClientSpy){
         let client = FeedClientSpy()
-        let sut = LocalFeedLoader(uri: uri, client: client)
+        let sut = LocalLoader(uri: uri, client: client)
         return (sut, client)
     }
     
