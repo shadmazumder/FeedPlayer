@@ -7,11 +7,11 @@
 
 import XCTest
 
-protocol FeedLoader {
+protocol Loader {
     func load()
 }
 
-struct LocalFeedLoader: FeedLoader{
+struct LocalFeedLoader: Loader{
     private let uri: String
     private let client: FeedClient
     
@@ -57,6 +57,10 @@ class FeedTests: XCTestCase {
         sut.load()
         XCTAssertTrue(client.uri == [anyURI, anyURI])
     }
+    
+//    func test_load_deliversError_onClientError() {
+//
+//    }
     
     // MARK: - Helper
     private func makeSUT(_ uri: String = "") -> (sut: LocalFeedLoader, client: FeedClientSpy){
