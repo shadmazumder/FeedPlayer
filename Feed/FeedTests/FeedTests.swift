@@ -6,15 +6,7 @@
 //
 
 import XCTest
-
-protocol Loader {
-    associatedtype APIModel: Decodable
-    associatedtype LoaderError: Error
-    
-    typealias Result = Swift.Result<APIModel, LoaderError>
-
-    func load(completion: @escaping ((Result) -> Void))
-}
+import Feed
 
 class LocalLoader<T: Decodable>: Loader{
     public typealias APIModel = T
