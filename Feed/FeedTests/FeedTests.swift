@@ -16,7 +16,7 @@ protocol Loader {
     func load(completion: @escaping ((Result) -> Void))
 }
 
-struct LocalLoader<T: Decodable>: Loader{
+class LocalLoader<T: Decodable>: Loader{
     public typealias APIModel = T
     public typealias LoaderError = Error
     
@@ -33,10 +33,10 @@ struct LocalLoader<T: Decodable>: Loader{
     }
     
     func load(completion: @escaping ((Result<APIModel, LoaderError>) -> Void)){
-        client.get(from: uri){ result in
+        client.get(from: uri){ [weak self] result in
             switch result {
             case let .success(data):
-                mapSuccessFrom(data, completion)
+                self?.mapSuccessFrom(data, completion)
             default:
                 completion(.failure(.resourceNotFound))
             }
@@ -125,6 +125,18 @@ class FeedTests: XCTestCase {
         expect(sut, tocompleteWith: .success(jsonWithData.validJsonString)) {
             client.completeWith(jsonWithData.data)
         }
+    }
+    
+    func test_load_doesNotDeliverResultAfterSUTBeenDeallocated() {
+        let client = FeedClientSpy()
+        var sut: LocalLoaderStringType? = LocalLoaderStringType(uri: anyURI, client: client)
+        var receivedResult: LocalLoaderStringType.Result?
+        sut?.load(completion: { receivedResult = $0 })
+
+        sut = nil
+        client.completeWith(anyValidJsonStringWithData().data)
+
+        XCTAssertNil(receivedResult)
     }
     
     // MARK: - Helper
