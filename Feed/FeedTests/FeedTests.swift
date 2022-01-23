@@ -30,7 +30,6 @@ protocol FeedClient {
 }
 
 class FeedClientSpy: FeedClient {
-    var counter = 0
     var uri: String? = nil
     
     func get(from uri: String){
@@ -41,7 +40,7 @@ class FeedClientSpy: FeedClient {
 class FeedTests: XCTestCase {
     func test_init_doesNotInitiateRequest() {
         let (_, client) = makeSUT()
-        XCTAssertTrue(client.counter == 0)
+        XCTAssertNil(client.uri)
     }
     
     func test_load_requestDataFromURI() {
