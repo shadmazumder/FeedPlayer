@@ -118,6 +118,15 @@ class FeedTests: XCTestCase {
         }
     }
     
+    func test_load_deliversItems_ForJSONItems() {
+        let (sut, client) = makeSUT()
+        let jsonWithData = anyValidJsonStringWithData()
+
+        expect(sut, tocompleteWith: .success(jsonWithData.validJsonString)) {
+            client.completeWith(jsonWithData.data)
+        }
+    }
+    
     // MARK: - Helper
     private typealias LocalLoaderStringType = LocalLoader<String>
     
@@ -148,5 +157,12 @@ class FeedTests: XCTestCase {
         action()
 
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func anyValidJsonStringWithData(_ validJsonString: String = "{\"title\":\"any title\"}") -> (validJsonString: String, data: Data) {
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(validJsonString)
+
+        return (validJsonString, data)
     }
 }
