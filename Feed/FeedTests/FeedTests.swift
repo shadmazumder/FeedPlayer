@@ -14,6 +14,7 @@ class LocalLoader<T: Decodable>: Loader{
     
     public enum Error: Swift.Error {
         case resourceNotFound
+        case decoding(DecodingError)
     }
     
     private let uri: String
@@ -41,6 +42,14 @@ class LocalLoader<T: Decodable>: Loader{
             let root = try jsonDecoder.decode(T.self, from: data)
             completion(.success(root))
         } catch {
+            mapErrorFrom(error, completion)
+        }
+    }
+    
+    private func mapErrorFrom(_ error: Swift.Error, _ completion: ((Result<APIModel, LoaderError>) -> Void)) {
+        if let decodingError = error as? DecodingError {
+            completion(.failure(.decoding(decodingError)))
+        }else {
             completion(.failure(.resourceNotFound))
         }
     }
@@ -110,6 +119,39 @@ class LocalLoaderTests: XCTestCase {
         client.completeWith(anyValidJsonStringWithData().data)
 
         XCTAssertNil(receivedResult)
+    }
+    
+    func test_load_deliverDecodingError_onFaultyKeyNameForJson() {
+        typealias TitleFeedLocalLoader = LocalLoader<TitleFeed>
+        
+        struct TitleFeed: Decodable{
+            let title: String
+        }
+        
+        let validJsonString = "{\"name\":\"any title\"}"
+        let jsonWithData = anyValidJsonStringWithData(validJsonString)
+        
+        let client = FeedClientSpy()
+        let sut = TitleFeedLocalLoader(uri: anyURI, client: client)
+
+        let exp = expectation(description: "Waiting for the client")
+        
+        sut.load { result in
+            switch result {
+            case let .failure(receivedError):
+                if case TitleFeedLocalLoader.Error.decoding = receivedError {
+                    exp.fulfill()
+                }else{
+                    fallthrough
+                }
+            default:
+                XCTFail("Expected Failure but got \(result)")
+            }
+        }
+        
+        client.completeWith(jsonWithData.data)
+        
+        wait(for: [exp], timeout: 1.0)
     }
     
     // MARK: - Helper
