@@ -8,10 +8,21 @@
 import XCTest
 
 protocol Loader {
-    func load()
+    associatedtype APIModel: Decodable
+    associatedtype LoaderError: Error
+    
+    typealias Result = Swift.Result<APIModel, LoaderError>
+
+    func load(completion: @escaping ((Result) -> Void))
 }
 
-struct LocalLoader: Loader{
+struct LocalLoader<T: Decodable>: Loader{
+    public typealias APIModel = T
+    public typealias LoaderError = Error
+    
+    public enum Error: Swift.Error {
+    }
+    
     private let uri: String
     private let client: Client
     
@@ -20,7 +31,7 @@ struct LocalLoader: Loader{
         self.client = client
     }
     
-    func load(){
+    func load(completion: @escaping ((Result<APIModel, LoaderError>) -> Void)){
         client.get(from: uri)
     }
 }
@@ -46,26 +57,24 @@ class FeedTests: XCTestCase {
     func test_load_requestDataFromURI() {
         let anyURI = anyURI
         let (sut, client) = makeSUT(anyURI)
-        sut.load()
+        sut.load() { _ in }
         XCTAssertTrue(client.uri == [anyURI])
     }
     
     func test_loadTwice_requestDataFromURITwice() {
         let anyURI = anyURI
         let (sut, client) = makeSUT(anyURI)
-        sut.load()
-        sut.load()
+        sut.load() { _ in }
+        sut.load() { _ in }
         XCTAssertTrue(client.uri == [anyURI, anyURI])
     }
     
-//    func test_load_deliversError_onClientError() {
-//
-//    }
-    
     // MARK: - Helper
-    private func makeSUT(_ uri: String = "") -> (sut: LocalLoader, client: FeedClientSpy){
+    private typealias RemoteLoaderStringType = LocalLoader<String>
+    
+    private func makeSUT(_ uri: String = "") -> (sut: RemoteLoaderStringType, client: FeedClientSpy){
         let client = FeedClientSpy()
-        let sut = LocalLoader(uri: uri, client: client)
+        let sut = RemoteLoaderStringType(uri: uri, client: client)
         return (sut, client)
     }
     
