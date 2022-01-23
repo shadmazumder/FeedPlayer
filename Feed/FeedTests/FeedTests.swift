@@ -14,6 +14,7 @@ class LocalLoader<T: Decodable>: Loader{
     
     public enum Error: Swift.Error {
         case resourceNotFound
+        case invalidData
         case decoding(DecodingError)
     }
     
@@ -50,7 +51,7 @@ class LocalLoader<T: Decodable>: Loader{
         if let decodingError = error as? DecodingError {
             completion(.failure(.decoding(decodingError)))
         }else {
-            completion(.failure(.resourceNotFound))
+            completion(.failure(.invalidData))
         }
     }
 }
