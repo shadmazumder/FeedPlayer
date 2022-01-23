@@ -56,11 +56,6 @@ class LocalLoader<T: Decodable>: Loader{
     }
 }
 
-protocol Client {
-    typealias Result = Swift.Result<Data, Error>
-    func get(from uri: String, completion: @escaping (Result) -> Void)
-}
-
 class LocalLoaderTests: XCTestCase {
     func test_init_doesNotInitiateRequest() {
         let (_, client) = makeSUT()
