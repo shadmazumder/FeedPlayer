@@ -59,25 +59,6 @@ protocol Client {
     func get(from uri: String, completion: @escaping (Result) -> Void)
 }
 
-class FeedClientSpy: Client {
-    var message = [(uri: String, completion: (Result) -> Void)]()
-    var requestedURI: [String] {
-        message.map({ $0.uri })
-    }
-    
-    func get(from uri: String, completion: @escaping (Client.Result) -> Void){
-        message.append((uri, completion))
-    }
-    
-    func completeWithError(_ error: Error, index: Int = 0) {
-        message[index].completion(.failure(error))
-    }
-    
-    func completeWith(_ data: Data, index: Int = 0) {
-        message[index].completion(.success((data)))
-    }
-}
-
 class LocalLoaderTests: XCTestCase {
     func test_init_doesNotInitiateRequest() {
         let (_, client) = makeSUT()
@@ -176,5 +157,24 @@ class LocalLoaderTests: XCTestCase {
         let data = try! encoder.encode(validJsonString)
 
         return (validJsonString, data)
+    }
+}
+
+class FeedClientSpy: Client {
+    var message = [(uri: String, completion: (Result) -> Void)]()
+    var requestedURI: [String] {
+        message.map({ $0.uri })
+    }
+    
+    func get(from uri: String, completion: @escaping (Client.Result) -> Void){
+        message.append((uri, completion))
+    }
+    
+    func completeWithError(_ error: Error, index: Int = 0) {
+        message[index].completion(.failure(error))
+    }
+    
+    func completeWith(_ data: Data, index: Int = 0) {
+        message[index].completion(.success((data)))
     }
 }
