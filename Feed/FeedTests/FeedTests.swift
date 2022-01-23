@@ -32,33 +32,43 @@ struct LocalLoader<T: Decodable>: Loader{
     }
     
     func load(completion: @escaping ((Result<APIModel, LoaderError>) -> Void)){
-        client.get(from: uri)
+        client.get(from: uri){ _ in
+            
+        }
     }
 }
 
 protocol Client {
-    func get(from uri: String)
+    typealias Result = Swift.Result<Data, Error>
+    func get(from uri: String, completion: @escaping (Result) -> Void)
 }
 
 class FeedClientSpy: Client {
-    var uri = [String]()
+    var message = [(uri: String, completion: (Result) -> Void)]()
+    var requestedURI: [String] {
+        message.map({ $0.uri })
+    }
     
-    func get(from uri: String){
-        self.uri.append(uri)
+    func get(from uri: String, completion: @escaping (Client.Result) -> Void){
+        message.append((uri, completion))
+    }
+    
+    func completeWithError(_ error: Error, index: Int = 0) {
+        message[index].completion(.failure(error))
     }
 }
 
 class FeedTests: XCTestCase {
     func test_init_doesNotInitiateRequest() {
         let (_, client) = makeSUT()
-        XCTAssertTrue(client.uri.isEmpty)
+        XCTAssertTrue(client.requestedURI.isEmpty)
     }
     
     func test_load_requestDataFromURI() {
         let anyURI = anyURI
         let (sut, client) = makeSUT(anyURI)
         sut.load() { _ in }
-        XCTAssertTrue(client.uri == [anyURI])
+        XCTAssertTrue(client.requestedURI == [anyURI])
     }
     
     func test_loadTwice_requestDataFromURITwice() {
@@ -66,7 +76,7 @@ class FeedTests: XCTestCase {
         let (sut, client) = makeSUT(anyURI)
         sut.load() { _ in }
         sut.load() { _ in }
-        XCTAssertTrue(client.uri == [anyURI, anyURI])
+        XCTAssertTrue(client.requestedURI == [anyURI, anyURI])
     }
     
     func test_load_deliverError_onClientError() {
