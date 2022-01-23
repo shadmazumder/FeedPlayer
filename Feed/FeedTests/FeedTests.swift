@@ -8,17 +8,34 @@
 import XCTest
 
 protocol FeedLoader {
-    
+    func load()
 }
 
-struct LocalFeedLoader: FeedLoader{}
+struct LocalFeedLoader: FeedLoader{
+    private let uri: String
+    private let client: FeedClient
+    
+    public init(uri: String, client: FeedClient){
+        self.uri = uri
+        self.client = client
+    }
+    
+    func load(){
+        client.get(from: uri)
+    }
+}
 
 protocol FeedClient {
-    
+    func get(from uri: String)
 }
 
-struct FeedClientSpy: FeedClient {
+class FeedClientSpy: FeedClient {
     var counter = 0
+    var uri: String? = nil
+    
+    func get(from uri: String){
+        self.uri = uri
+    }
 }
 
 class FeedTests: XCTestCase {
@@ -27,8 +44,19 @@ class FeedTests: XCTestCase {
         XCTAssertTrue(client.counter == 0)
     }
     
-    // MARK: - Helper
-    private func makeSUT() -> (sut: FeedLoader, client: FeedClientSpy){
-        return (LocalFeedLoader(), FeedClientSpy())
+    func test_load_requestDataFromURI() {
+        let anyURI = anyURI
+        let (sut, client) = makeSUT(anyURI)
+        sut.load()
+        XCTAssertTrue(client.uri == anyURI)
     }
+    
+    // MARK: - Helper
+    private func makeSUT(_ uri: String = "") -> (sut: LocalFeedLoader, client: FeedClientSpy){
+        let client = FeedClientSpy()
+        let sut = LocalFeedLoader(uri: uri, client: client)
+        return (sut, client)
+    }
+    
+    private let anyURI = "any-uri"
 }
