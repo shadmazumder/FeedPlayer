@@ -69,12 +69,16 @@ class FeedTests: XCTestCase {
         XCTAssertTrue(client.uri == [anyURI, anyURI])
     }
     
-    // MARK: - Helper
-    private typealias RemoteLoaderStringType = LocalLoader<String>
+    func test_load_deliverError_onClientError() {
+        
+    }
     
-    private func makeSUT(_ uri: String = "") -> (sut: RemoteLoaderStringType, client: FeedClientSpy){
+    // MARK: - Helper
+    private typealias LocalLoaderStringType = LocalLoader<String>
+    
+    private func makeSUT(_ uri: String = "") -> (sut: LocalLoaderStringType, client: FeedClientSpy){
         let client = FeedClientSpy()
-        let sut = RemoteLoaderStringType(uri: uri, client: client)
+        let sut = LocalLoaderStringType(uri: uri, client: client)
         return (sut, client)
     }
     
