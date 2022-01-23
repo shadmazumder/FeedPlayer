@@ -13,9 +13,9 @@ protocol Loader {
 
 struct LocalLoader: Loader{
     private let uri: String
-    private let client: FeedClient
+    private let client: Client
     
-    public init(uri: String, client: FeedClient){
+    public init(uri: String, client: Client){
         self.uri = uri
         self.client = client
     }
@@ -25,11 +25,11 @@ struct LocalLoader: Loader{
     }
 }
 
-protocol FeedClient {
+protocol Client {
     func get(from uri: String)
 }
 
-class FeedClientSpy: FeedClient {
+class FeedClientSpy: Client {
     var uri = [String]()
     
     func get(from uri: String){
