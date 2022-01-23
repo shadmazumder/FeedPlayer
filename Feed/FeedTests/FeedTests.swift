@@ -50,6 +50,14 @@ class FeedTests: XCTestCase {
         XCTAssertTrue(client.uri == [anyURI])
     }
     
+    func test_loadTwice_requestDataFromURITwice() {
+        let anyURI = anyURI
+        let (sut, client) = makeSUT(anyURI)
+        sut.load()
+        sut.load()
+        XCTAssertTrue(client.uri == [anyURI, anyURI])
+    }
+    
     // MARK: - Helper
     private func makeSUT(_ uri: String = "") -> (sut: LocalFeedLoader, client: FeedClientSpy){
         let client = FeedClientSpy()
