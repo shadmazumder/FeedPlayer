@@ -30,24 +30,24 @@ protocol FeedClient {
 }
 
 class FeedClientSpy: FeedClient {
-    var uri: String? = nil
+    var uri = [String]()
     
     func get(from uri: String){
-        self.uri = uri
+        self.uri.append(uri)
     }
 }
 
 class FeedTests: XCTestCase {
     func test_init_doesNotInitiateRequest() {
         let (_, client) = makeSUT()
-        XCTAssertNil(client.uri)
+        XCTAssertTrue(client.uri.isEmpty)
     }
     
     func test_load_requestDataFromURI() {
         let anyURI = anyURI
         let (sut, client) = makeSUT(anyURI)
         sut.load()
-        XCTAssertTrue(client.uri == anyURI)
+        XCTAssertTrue(client.uri == [anyURI])
     }
     
     // MARK: - Helper
