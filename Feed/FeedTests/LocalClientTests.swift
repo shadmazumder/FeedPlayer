@@ -9,13 +9,17 @@ import XCTest
 import Feed
 
 struct LocalClient: Client {
+    enum Error: Swift.Error {
+        case invalidURI
+    }
+    
     func get(from uri: String, completion: @escaping (Client.Result) -> Void) {
-        
+        completion(.failure(Error.invalidURI))
     }
 }
 
 class LocalClientTests: XCTestCase {
-    func test_init_doesNotPerformCompletion() {
+    func test_get_executesCompletion() {
         var completionCalled = false
         let sut = LocalClient()
         
@@ -23,7 +27,7 @@ class LocalClientTests: XCTestCase {
             completionCalled = true
         }
         
-        XCTAssertFalse(completionCalled)
+        XCTAssertTrue(completionCalled)
     }
     
     // MARK: - Helper
