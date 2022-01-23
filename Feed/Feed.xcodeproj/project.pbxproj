@@ -18,6 +18,8 @@
 		A1E1D21B279DEDAF00FB0BFC /* Feeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E1D21A279DEDAF00FB0BFC /* Feeds.storyboard */; };
 		A1E1D21D279DEDEF00FB0BFC /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D21C279DEDEF00FB0BFC /* FeedsViewController.swift */; };
 		A1E1D21F279DF08E00FB0BFC /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D21E279DF08E00FB0BFC /* FeedViewModel.swift */; };
+		A1E1D221279DF36E00FB0BFC /* Feed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E1D1DA279DBD9B00FB0BFC /* Feed.framework */; };
+		A1E1D222279DF36E00FB0BFC /* Feed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1E1D1DA279DBD9B00FB0BFC /* Feed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +37,28 @@
 			remoteGlobalIDString = A1E1D201279DE95700FB0BFC;
 			remoteInfo = FeediOS;
 		};
+		A1E1D223279DF36E00FB0BFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1E1D1D1279DBD9B00FB0BFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1E1D1D9279DBD9B00FB0BFC;
+			remoteInfo = Feed;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A1E1D225279DF36E00FB0BFC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A1E1D222279DF36E00FB0BFC /* Feed.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A1E1D1DA279DBD9B00FB0BFC /* Feed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Feed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E1D221279DF36E00FB0BFC /* Feed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +119,7 @@
 				A1E1D203279DE95700FB0BFC /* FeediOS */,
 				A1E1D20D279DE95700FB0BFC /* FeediOSTests */,
 				A1E1D1DB279DBD9B00FB0BFC /* Products */,
+				A1E1D220279DF36E00FB0BFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,6 +187,13 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
+		A1E1D220279DF36E00FB0BFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -226,10 +258,12 @@
 				A1E1D1FE279DE95700FB0BFC /* Sources */,
 				A1E1D1FF279DE95700FB0BFC /* Frameworks */,
 				A1E1D200279DE95700FB0BFC /* Resources */,
+				A1E1D225279DF36E00FB0BFC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A1E1D224279DF36E00FB0BFC /* PBXTargetDependency */,
 			);
 			name = FeediOS;
 			productName = FeediOS;
@@ -383,6 +417,11 @@
 			target = A1E1D201279DE95700FB0BFC /* FeediOS */;
 			targetProxy = A1E1D20B279DE95700FB0BFC /* PBXContainerItemProxy */;
 		};
+		A1E1D224279DF36E00FB0BFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1E1D1D9279DBD9B00FB0BFC /* Feed */;
+			targetProxy = A1E1D223279DF36E00FB0BFC /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -442,7 +481,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -499,7 +538,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -568,6 +607,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
