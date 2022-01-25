@@ -49,7 +49,9 @@ class LocalLoaderTests: XCTestCase {
     }
     
     func test_load_deliversItems_ForJSONItems() {
-        let (sut, client) = makeSUT()
+        let client = FeedClientSpy()
+        let sut = LocalLoader(uri: anyURI, client: client, feedGenerator: NonUniqueFeedGenerator())
+        
         let feedContainerWithData = anyFeedContainerWithData([anyFeedMapper])
 
         expect(sut, tocompleteWith: .success(feedContainerWithData.feedContainerMapper.model)) {
@@ -59,7 +61,7 @@ class LocalLoaderTests: XCTestCase {
     
     func test_load_doesNotDeliverResultAfterSUTBeenDeallocated() {
         let client = FeedClientSpy()
-        var sut: LocalLoader? = LocalLoader(uri: anyURI, client: client)
+        var sut: LocalLoader? = LocalLoader(uri: anyURI, client: client, feedGenerator: feedGenerator)
         var receivedResult: LocalLoader.Result?
         sut?.load(from: 0, completion: { receivedResult = $0 })
 
@@ -73,7 +75,7 @@ class LocalLoaderTests: XCTestCase {
         let emptyEntities = ""
 
         let client = FeedClientSpy()
-        let sut = LocalLoader(uri: anyURI, client: client)
+        let sut = LocalLoader(uri: anyURI, client: client, feedGenerator: feedGenerator)
 
         let exp = expectation(description: "Waiting for the client")
 
@@ -98,11 +100,12 @@ class LocalLoaderTests: XCTestCase {
     // MARK: - Helper
     private func makeSUT(_ uri: String = "") -> (sut: LocalLoader, client: FeedClientSpy){
         let client = FeedClientSpy()
-        let sut = LocalLoader(uri: uri, client: client)
+        let sut = LocalLoader(uri: uri, client: client, feedGenerator: feedGenerator)
         return (sut, client)
     }
     
     private let anyURI = "any-uri"
+    private let feedGenerator = FeedGenerator()
     
     private func expect(_ sut: LocalLoader, tocompleteWith expectedResult: Loader.Result, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Waiting for the client")
@@ -123,5 +126,11 @@ class LocalLoaderTests: XCTestCase {
         action()
 
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    private struct NonUniqueFeedGenerator: UniqueFeedGenerator{
+        func generateUnique(_ feeds: [FeedModel]) -> [FeedModel] {
+            feeds
+        }
     }
 }

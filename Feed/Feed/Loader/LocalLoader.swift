@@ -16,10 +16,12 @@ public class LocalLoader: Loader{
     
     private let uri: String
     private let client: Client
+    private let feedGenerator: UniqueFeedGenerator
     
-    public init(uri: String, client: Client){
+    public init(uri: String, client: Client, feedGenerator: UniqueFeedGenerator){
         self.uri = uri
         self.client = client
+        self.feedGenerator = feedGenerator
     }
     
     public func load(from startingIndex: Int, completion: @escaping ((Loader.Result) -> Void)) {
@@ -36,8 +38,10 @@ public class LocalLoader: Loader{
     private func mapSuccessFrom(_ data: Data, _ completion: @escaping ((Loader.Result) -> Void)) {
         do {
             let jsonDecoder = JSONDecoder()
-            let root = try jsonDecoder.decode(FeedModelContainer.self, from: data)
-            completion(.success(root))
+            let container = try jsonDecoder.decode(FeedModelContainer.self, from: data)
+            let uniqueFeeds = feedGenerator.generateUnique(container.feeds)
+            let uniqueFeedContainer = FeedModelContainer(feeds: uniqueFeeds)
+            completion(.success(uniqueFeedContainer))
         } catch {
             mapErrorFrom(error, completion)
         }

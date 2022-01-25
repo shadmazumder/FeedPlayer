@@ -14,6 +14,7 @@ public struct LocalClient: Client {
     
     public func get(from uri: String, _ startingIndex: Int, completion: @escaping (Client.Result) -> Void) {
         do{
+            // Here we will load next feeds based on the startingIndex
             completion(.success(try Data(contentsOf: URL(fileURLWithPath: uri))))
         }catch {
             completion(.failure(Error.corruptedData))
