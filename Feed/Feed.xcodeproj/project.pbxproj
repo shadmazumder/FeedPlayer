@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A102D42A27A075B5004F4106 /* NonUniqueFeedGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D42927A075B5004F4106 /* NonUniqueFeedGenerator.swift */; };
+		A102D42B27A075BF004F4106 /* NonUniqueFeedGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D42927A075B5004F4106 /* NonUniqueFeedGenerator.swift */; };
 		A1D4EF3827A033BA001BB09E /* FeedContainerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */; };
 		A1D4EF3927A033BD001BB09E /* FeedModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */; };
 		A1D4EF3B27A033D5001BB09E /* FeedMapperProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */; };
@@ -19,6 +21,7 @@
 		A1D4EF4B27A04942001BB09E /* PlayerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF4A27A04942001BB09E /* PlayerProvider.swift */; };
 		A1D4EF5227A06AB5001BB09E /* FeedGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF5127A06AB5001BB09E /* FeedGenerator.swift */; };
 		A1D4EF5427A06EB7001BB09E /* UniqueFeedGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF5327A06EB7001BB09E /* UniqueFeedGenerator.swift */; };
+		A1D4EF5627A06F62001BB09E /* FeedsViewController+UITableViewPrefetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF5527A06F62001BB09E /* FeedsViewController+UITableViewPrefetchDelegate.swift */; };
 		A1E1D1E3279DBD9B00FB0BFC /* Feed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E1D1DA279DBD9B00FB0BFC /* Feed.framework */; };
 		A1E1D1E8279DBD9B00FB0BFC /* LocalLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D1E7279DBD9B00FB0BFC /* LocalLoaderTests.swift */; };
 		A1E1D1F4279DD6A700FB0BFC /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D1F3279DD6A700FB0BFC /* Loader.swift */; };
@@ -83,6 +86,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A102D42927A075B5004F4106 /* NonUniqueFeedGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonUniqueFeedGenerator.swift; sourceTree = "<group>"; };
 		A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMapperProvider.swift; sourceTree = "<group>"; };
 		A1D4EF3E27A03AAB001BB09E /* FeedsViewController+TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsViewController+TestHelper.swift"; sourceTree = "<group>"; };
 		A1D4EF4027A03B98001BB09E /* XCTestCase+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helper.swift"; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 		A1D4EF4A27A04942001BB09E /* PlayerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProvider.swift; sourceTree = "<group>"; };
 		A1D4EF5127A06AB5001BB09E /* FeedGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGenerator.swift; sourceTree = "<group>"; };
 		A1D4EF5327A06EB7001BB09E /* UniqueFeedGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueFeedGenerator.swift; sourceTree = "<group>"; };
+		A1D4EF5527A06F62001BB09E /* FeedsViewController+UITableViewPrefetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsViewController+UITableViewPrefetchDelegate.swift"; sourceTree = "<group>"; };
 		A1E1D1DA279DBD9B00FB0BFC /* Feed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Feed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1E1D1E2279DBD9B00FB0BFC /* FeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1E1D1E7279DBD9B00FB0BFC /* LocalLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLoaderTests.swift; sourceTree = "<group>"; };
@@ -319,6 +324,7 @@
 			children = (
 				A1E1D236279FE07800FB0BFC /* FeedClientSpy.swift */,
 				A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */,
+				A102D42927A075B5004F4106 /* NonUniqueFeedGenerator.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -328,6 +334,7 @@
 			children = (
 				A1E1D23D27A029B100FB0BFC /* FeedsViewController.swift */,
 				A1E1D23F27A029B100FB0BFC /* FeedsViewController+TableViewDelegate.swift */,
+				A1D4EF5527A06F62001BB09E /* FeedsViewController+UITableViewPrefetchDelegate.swift */,
 			);
 			path = FeedViewController;
 			sourceTree = "<group>";
@@ -537,6 +544,7 @@
 				A1D4EF3B27A033D5001BB09E /* FeedMapperProvider.swift in Sources */,
 				A1E1D237279FE07800FB0BFC /* FeedClientSpy.swift in Sources */,
 				A1E1D232279FD9E100FB0BFC /* FeedContainerMapper.swift in Sources */,
+				A102D42A27A075B5004F4106 /* NonUniqueFeedGenerator.swift in Sources */,
 				A1E1D1E8279DBD9B00FB0BFC /* LocalLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1D4EF5627A06F62001BB09E /* FeedsViewController+UITableViewPrefetchDelegate.swift in Sources */,
 				A1E1D24A27A02B3200FB0BFC /* UITableView+DequeCell.swift in Sources */,
 				A1E1D24427A029B100FB0BFC /* FeedsViewController.swift in Sources */,
 				A1D4EF4B27A04942001BB09E /* PlayerProvider.swift in Sources */,
@@ -568,6 +577,7 @@
 				A1D4EF4127A03B98001BB09E /* XCTestCase+Helper.swift in Sources */,
 				A1E1D20F279DE95700FB0BFC /* FeedsViewControllerTests.swift in Sources */,
 				A1D4EF3927A033BD001BB09E /* FeedModelMapper.swift in Sources */,
+				A102D42B27A075BF004F4106 /* NonUniqueFeedGenerator.swift in Sources */,
 				A1E1D238279FE0C200FB0BFC /* FeedClientSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

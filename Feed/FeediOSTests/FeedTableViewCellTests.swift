@@ -18,8 +18,15 @@ class FeedTableViewCellTests: XCTestCase {
     }
     
     func test_feedCell_rendersFeedProperty() {
+        let client = FeedClientSpy()
+        let sut = launchesViewControllerFromFeedsSotyboard() as! FeedsViewController
+        sut.loader = LocalLoader(uri: XCTestCase.anyURI, client: client, feedGenerator: NonUniqueFeedGenerator())
+        
         let feed = anyFeedMapper.model
-        let sut = renderedSUT(with: [feed.mapper])
+        let feedContainerData = anyFeedContainerWithData([feed.mapper])
+        
+        sut.loadViewIfNeeded()
+        client.completeWith(feedContainerData.data)
         
         let feedCell = sut.feedCell()
         

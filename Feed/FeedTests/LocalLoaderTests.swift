@@ -127,10 +127,4 @@ class LocalLoaderTests: XCTestCase {
 
         wait(for: [exp], timeout: 1.0)
     }
-    
-    private struct NonUniqueFeedGenerator: UniqueFeedGenerator{
-        func generateUnique(_ feeds: [FeedModel]) -> [FeedModel] {
-            feeds
-        }
-    }
 }
