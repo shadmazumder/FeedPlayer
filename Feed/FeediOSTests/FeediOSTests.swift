@@ -58,23 +58,6 @@ class FeediOSTests: XCTestCase {
         
         XCTAssertNotNil(sut.cell())
     }
-    
-    // MARK: - Helper
-    private func makeSUT(uri: String = FeediOSTests.anyURI) -> (sut: FeedsViewController, client: FeedClientSpy){
-        let clientSpy = FeedClientSpy()
-        let sut = launchesViewControllerFromFeedsSotyboard() as! FeedsViewController
-        sut.loader = LocalLoader(uri: uri, client: clientSpy)
-        
-        return (sut, clientSpy)
-    }
-    
-    private func launchesViewControllerFromFeedsSotyboard() -> UIViewController? {
-        let bundle = Bundle(for: FeedsViewController.self)
-        let storyboard = UIStoryboard(name: "Feeds", bundle: bundle)
-        return storyboard.instantiateInitialViewController()
-    }
-    
-    private static var anyURI: String { "any-uri" }
 }
 
 private class FeedsErrorHandler: FeedsViewControllerErrorDelegate{
