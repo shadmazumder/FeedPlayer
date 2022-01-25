@@ -38,6 +38,16 @@ class FeedTableViewCellTests: XCTestCase {
         
         XCTAssertEqual(player.states, [.play])
     }
+    
+    func test_prepareReuse_resetTextOnLabels() {
+        let sut = renderedSUT(with: [anyFeedMapper])
+        let feedCell = sut.feedCell()
+        
+        feedCell.prepareForReuse()
+        
+        XCTAssertNil(feedCell.feedTitle.text)
+        XCTAssertNil(feedCell.feedDescription.text)
+    }
 }
 
 private class PlayerContainer: PlayerDelegate{
