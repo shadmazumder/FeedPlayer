@@ -141,6 +141,7 @@
 		A1E1D1DC279DBD9B00FB0BFC /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				A1E1D22F279FD9A400FB0BFC /* Models */,
 				A1E1D1F2279DD69000FB0BFC /* Loader */,
 				A1E1D22E279FD97E00FB0BFC /* Client */,
 			);
@@ -160,8 +161,6 @@
 			children = (
 				A1E1D1F3279DD6A700FB0BFC /* Loader.swift */,
 				A1E1D1F5279DD6FB00FB0BFC /* LocalLoader.swift */,
-				A1E1D22A279EFAF200FB0BFC /* FeedModel.swift */,
-				A1E1D22C279F120300FB0BFC /* FeedModelContainer.swift */,
 			);
 			path = Loader;
 			sourceTree = "<group>";
@@ -206,6 +205,15 @@
 				A1E1D1FB279DE7AC00FB0BFC /* LocalClient.swift */,
 			);
 			path = Client;
+			sourceTree = "<group>";
+		};
+		A1E1D22F279FD9A400FB0BFC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1E1D22C279F120300FB0BFC /* FeedModelContainer.swift */,
+				A1E1D22A279EFAF200FB0BFC /* FeedModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
