@@ -137,22 +137,3 @@ class LocalLoaderTests: XCTestCase {
         FeedModelMapper(title: "any title", description: "any description", source: "any-source")
     }
 }
-
-class FeedClientSpy: Client {
-    var message = [(uri: String, completion: (Result) -> Void)]()
-    var requestedURI: [String] {
-        message.map({ $0.uri })
-    }
-    
-    func get(from uri: String, completion: @escaping (Client.Result) -> Void){
-        message.append((uri, completion))
-    }
-    
-    func completeWithError(_ error: Error, index: Int = 0) {
-        message[index].completion(.failure(error))
-    }
-    
-    func completeWith(_ data: Data, index: Int = 0) {
-        message[index].completion(.success((data)))
-    }
-}

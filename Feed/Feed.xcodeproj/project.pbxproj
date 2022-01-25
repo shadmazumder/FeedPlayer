@@ -24,6 +24,7 @@
 		A1E1D22D279F120300FB0BFC /* FeedModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D22C279F120300FB0BFC /* FeedModelContainer.swift */; };
 		A1E1D232279FD9E100FB0BFC /* FeedContainerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */; };
 		A1E1D234279FDA3D00FB0BFC /* FeedModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */; };
+		A1E1D237279FE07800FB0BFC /* FeedClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D236279FE07800FB0BFC /* FeedClientSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		A1E1D22C279F120300FB0BFC /* FeedModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelContainer.swift; sourceTree = "<group>"; };
 		A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContainerMapper.swift; sourceTree = "<group>"; };
 		A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelMapper.swift; sourceTree = "<group>"; };
+		A1E1D236279FE07800FB0BFC /* FeedClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedClientSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 		A1E1D1E6279DBD9B00FB0BFC /* FeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				A1E1D235279FE06200FB0BFC /* Helper */,
 				A1E1D230279FD9D100FB0BFC /* MapperModels */,
 				A1E1D1E7279DBD9B00FB0BFC /* LocalLoaderTests.swift */,
 			);
@@ -228,6 +231,14 @@
 				A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */,
 			);
 			path = MapperModels;
+			sourceTree = "<group>";
+		};
+		A1E1D235279FE06200FB0BFC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A1E1D236279FE07800FB0BFC /* FeedClientSpy.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1E1D234279FDA3D00FB0BFC /* FeedModelMapper.swift in Sources */,
+				A1E1D237279FE07800FB0BFC /* FeedClientSpy.swift in Sources */,
 				A1E1D232279FD9E100FB0BFC /* FeedContainerMapper.swift in Sources */,
 				A1E1D1E8279DBD9B00FB0BFC /* LocalLoaderTests.swift in Sources */,
 			);
