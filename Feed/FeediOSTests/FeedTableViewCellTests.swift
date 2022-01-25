@@ -30,7 +30,7 @@ class FeedTableViewCellTests: XCTestCase {
         XCTAssertNotNil(sut.cell() as? FeedTableViewCell)
     }
     
-    func test_playsVideo_onWillDisplay() {
+    func test_willDisplay_playsVideo() {
         let sut = renderedSUT(with: [anyFeedMapper])
         let player = PlayerSpy()
         sut.playerDelegate = PlayerContainer(spyPlayer: player)
