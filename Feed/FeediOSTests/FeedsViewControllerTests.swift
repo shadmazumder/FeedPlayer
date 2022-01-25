@@ -53,6 +53,10 @@ class FeedsViewControllerTests: XCTestCase {
         
         XCTAssertNotNil(sut.cell())
     }
+    
+    func test_prefetchRow_requestForNextFeeds() {
+        
+    }
 }
 
 private class FeedsErrorHandler: FeedsViewControllerErrorDelegate{

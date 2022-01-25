@@ -173,6 +173,15 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
+		A1D4EF4C27A06422001BB09E /* FeedCell */ = {
+			isa = PBXGroup;
+			children = (
+				A1E1D23A27A029B000FB0BFC /* FeedTableViewCell.swift */,
+				A1E1D23B27A029B000FB0BFC /* PlayerView.swift */,
+			);
+			path = FeedCell;
+			sourceTree = "<group>";
+		};
 		A1E1D1D0279DBD9B00FB0BFC = {
 			isa = PBXGroup;
 			children = (
@@ -248,12 +257,11 @@
 		A1E1D217279DEC6500FB0BFC /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				A1D4EF4727A0490F001BB09E /* Player */,
 				A1E1D23927A029B000FB0BFC /* Feeds.storyboard */,
-				A1E1D23A27A029B000FB0BFC /* FeedTableViewCell.swift */,
-				A1E1D23C27A029B100FB0BFC /* FeedViewController */,
 				A1E1D24027A029B100FB0BFC /* FeedViewModel.swift */,
-				A1E1D23B27A029B000FB0BFC /* PlayerView.swift */,
+				A1D4EF4727A0490F001BB09E /* Player */,
+				A1D4EF4C27A06422001BB09E /* FeedCell */,
+				A1E1D23C27A029B100FB0BFC /* FeedViewController */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
