@@ -23,6 +23,7 @@
 		A1E1D22B279EFAF200FB0BFC /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D22A279EFAF200FB0BFC /* FeedModel.swift */; };
 		A1E1D22D279F120300FB0BFC /* FeedModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D22C279F120300FB0BFC /* FeedModelContainer.swift */; };
 		A1E1D232279FD9E100FB0BFC /* FeedContainerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */; };
+		A1E1D234279FDA3D00FB0BFC /* FeedModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		A1E1D22A279EFAF200FB0BFC /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		A1E1D22C279F120300FB0BFC /* FeedModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelContainer.swift; sourceTree = "<group>"; };
 		A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContainerMapper.swift; sourceTree = "<group>"; };
+		A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */,
+				A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */,
 			);
 			path = MapperModels;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E1D234279FDA3D00FB0BFC /* FeedModelMapper.swift in Sources */,
 				A1E1D232279FD9E100FB0BFC /* FeedContainerMapper.swift in Sources */,
 				A1E1D1E8279DBD9B00FB0BFC /* FeedTests.swift in Sources */,
 			);
