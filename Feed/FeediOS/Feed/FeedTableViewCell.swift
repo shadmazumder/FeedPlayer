@@ -9,8 +9,8 @@ import UIKit
 import AVFoundation
 
 public class FeedTableViewCell: UITableViewCell {
-    @IBOutlet weak var feedTitle: UILabel!
-    @IBOutlet weak var feedDescription: UILabel!
+    @IBOutlet weak public private(set) var feedTitle: UILabel!
+    @IBOutlet weak public private(set) var feedDescription: UILabel!
     
     @IBOutlet weak var playerView: PlayerView!
 
