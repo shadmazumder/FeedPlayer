@@ -12,6 +12,8 @@ public struct LocalClient: Client {
         case corruptedData
     }
     
+    public init() {}
+    
     public func get(from uri: String, _ startingIndex: Int, completion: @escaping (Client.Result) -> Void) {
         do{
             // Here we will load next feeds based on the startingIndex
