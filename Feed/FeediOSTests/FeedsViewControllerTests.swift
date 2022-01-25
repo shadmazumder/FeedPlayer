@@ -49,12 +49,7 @@ class FeedsViewControllerTests: XCTestCase {
     }
     
     func test_rendersCell_onValidFeeds() {
-        let feedContainerData = anyFeedContainerWithData([anyFeedMapper])
-        let (sut, client) = makeSUT()
-        
-        sut.loadViewIfNeeded()
-        
-        client.completeWith(feedContainerData.data)
+        let sut = renderedSUT(with: [anyFeedMapper])
         
         XCTAssertNotNil(sut.cell())
     }

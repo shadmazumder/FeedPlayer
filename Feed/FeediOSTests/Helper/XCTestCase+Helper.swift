@@ -25,4 +25,14 @@ extension XCTestCase{
     }
     
     static var anyURI: String { "any-uri" }
+    
+    func renderedSUT(with feedMapper: [FeedModelMapper]) -> FeedsViewController{
+        let feedContainerData = anyFeedContainerWithData(feedMapper)
+        
+        let (sut, client) = makeSUT()
+        sut.loadViewIfNeeded()
+        client.completeWith(feedContainerData.data)
+        
+        return sut
+    }
 }

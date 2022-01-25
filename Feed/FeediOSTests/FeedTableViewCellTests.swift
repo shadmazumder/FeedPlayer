@@ -11,22 +11,14 @@ import FeediOS
 
 class FeedTableViewCellTests: XCTestCase {
     func test_rendersFeedCell_onValidFeeds() {
-        let feedContainerData = anyFeedContainerWithData([anyFeedMapper])
-        let (sut, client) = makeSUT()
-        
-        sut.loadViewIfNeeded()
-        
-        client.completeWith(feedContainerData.data)
+        let sut = renderedSUT(with: [anyFeedMapper])
         
         XCTAssertNotNil(sut.cell() as? FeedTableViewCell)
     }
     
     func test_feedCell_rendersFeedProperty() {
         let feed = anyFeedMapper.model
-        let feedContainerData = anyFeedContainerWithData([feed.mapper])
-        let (sut, client) = makeSUT()
-        sut.loadViewIfNeeded()
-        client.completeWith(feedContainerData.data)
+        let sut = renderedSUT(with: [feed.mapper])
         
         let feedCell = sut.feedCell()
         
