@@ -23,4 +23,8 @@ extension FeedsViewController{
     func willDisplayCell(_ index: Int = 0){
         feedTableView.delegate?.tableView!(feedTableView, willDisplay: cell(index), forRowAt: indexPath(index))
     }
+    
+    func didEndDisplay(_ index: Int = 0){
+        feedTableView.delegate?.tableView?(feedTableView, didEndDisplaying: cell(index), forRowAt: indexPath(index))
+    }
 }
