@@ -90,9 +90,3 @@ private class FeedsErrorHandler: FeedsViewControllerErrorDelegate{
         }
     }
 }
-
-extension FeedsViewController{
-    func cell(_ index: Int = 0) -> UITableViewCell{
-        dataSource.tableView(feedTableView, cellForRowAt: IndexPath(row: index, section: 0))
-    }
-}

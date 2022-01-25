@@ -11,6 +11,7 @@
 		A1D4EF3927A033BD001BB09E /* FeedModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */; };
 		A1D4EF3B27A033D5001BB09E /* FeedMapperProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */; };
 		A1D4EF3C27A034D3001BB09E /* FeedMapperProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */; };
+		A1D4EF3F27A03AAB001BB09E /* FeedsViewController+TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF3E27A03AAB001BB09E /* FeedsViewController+TestHelper.swift */; };
 		A1E1D1E3279DBD9B00FB0BFC /* Feed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E1D1DA279DBD9B00FB0BFC /* Feed.framework */; };
 		A1E1D1E8279DBD9B00FB0BFC /* LocalLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D1E7279DBD9B00FB0BFC /* LocalLoaderTests.swift */; };
 		A1E1D1F4279DD6A700FB0BFC /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D1F3279DD6A700FB0BFC /* Loader.swift */; };
@@ -76,6 +77,7 @@
 
 /* Begin PBXFileReference section */
 		A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMapperProvider.swift; sourceTree = "<group>"; };
+		A1D4EF3E27A03AAB001BB09E /* FeedsViewController+TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsViewController+TestHelper.swift"; sourceTree = "<group>"; };
 		A1E1D1DA279DBD9B00FB0BFC /* Feed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Feed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1E1D1E2279DBD9B00FB0BFC /* FeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1E1D1E7279DBD9B00FB0BFC /* LocalLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLoaderTests.swift; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1D4EF3D27A03A96001BB09E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A1D4EF3E27A03AAB001BB09E /* FeedsViewController+TestHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		A1E1D1D0279DBD9B00FB0BFC = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +209,7 @@
 		A1E1D20D279DE95700FB0BFC /* FeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				A1D4EF3D27A03A96001BB09E /* Helper */,
 				A1E1D20E279DE95700FB0BFC /* FeediOSTests.swift */,
 			);
 			path = FeediOSTests;
@@ -492,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1D4EF3F27A03AAB001BB09E /* FeedsViewController+TestHelper.swift in Sources */,
 				A1D4EF3827A033BA001BB09E /* FeedContainerMapper.swift in Sources */,
 				A1D4EF3C27A034D3001BB09E /* FeedMapperProvider.swift in Sources */,
 				A1E1D20F279DE95700FB0BFC /* FeediOSTests.swift in Sources */,
