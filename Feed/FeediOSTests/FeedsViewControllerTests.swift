@@ -54,17 +54,28 @@ class FeedsViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.cell())
     }
     
+    func test_load_requestNoPagination() {
+        let (_, client) = completedWithSuccess()
+        XCTAssertEqual(client.startingIndexCounter.count, 1)
+    }
+    
     func test_prefetchRows_requestForNextFeeds() {
+        let (sut, client) = completedWithSuccess()
+        
+        let indicies = [8,9,10]
+        indicies.forEach({ sut.prefetchRows(indices: [$0]) })
+        
+        XCTAssertEqual(client.startingIndexCounter.count, indicies.count + 1)
+    }
+    
+    private func completedWithSuccess() -> (sut: FeedsViewController, client:FeedClientSpy){
         let (sut, client) = makeSUT()
         sut.loadViewIfNeeded()
         
         let feedContainerData = anyFeedContainerWithData([anyFeedMapper])
         client.completeWith(feedContainerData.data)
         
-        let indicies = [8,9,10]
-        indicies.forEach({ sut.prefetchRows(indices: [$0]) })
-        
-        XCTAssertEqual(client.startingIndexCounter.count, indicies.count + 1)
+        return (sut, client)
     }
 }
 
