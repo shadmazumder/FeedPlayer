@@ -182,11 +182,3 @@ extension Array where Element == FeedModelMapper{
 extension Array where Element == FeedModel{
     var mapToMapper: [FeedModelMapper]{ map({ $0.mapper }) }
 }
-
-struct FeedContainerMapper: Encodable {
-    let feeds: [FeedModelMapper]
-}
-
-extension FeedContainerMapper{
-    var model: FeedModelContainer{ FeedModelContainer(feeds: feeds.mapToModel) }
-}

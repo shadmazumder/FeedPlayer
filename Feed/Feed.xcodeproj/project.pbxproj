@@ -22,6 +22,7 @@
 		A1E1D222279DF36E00FB0BFC /* Feed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1E1D1DA279DBD9B00FB0BFC /* Feed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A1E1D22B279EFAF200FB0BFC /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D22A279EFAF200FB0BFC /* FeedModel.swift */; };
 		A1E1D22D279F120300FB0BFC /* FeedModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D22C279F120300FB0BFC /* FeedModelContainer.swift */; };
+		A1E1D232279FD9E100FB0BFC /* FeedContainerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		A1E1D21E279DF08E00FB0BFC /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		A1E1D22A279EFAF200FB0BFC /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		A1E1D22C279F120300FB0BFC /* FeedModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelContainer.swift; sourceTree = "<group>"; };
+		A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContainerMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 		A1E1D1E6279DBD9B00FB0BFC /* FeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				A1E1D230279FD9D100FB0BFC /* MapperModels */,
 				A1E1D1E7279DBD9B00FB0BFC /* FeedTests.swift */,
 			);
 			path = FeedTests;
@@ -214,6 +217,14 @@
 				A1E1D22A279EFAF200FB0BFC /* FeedModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A1E1D230279FD9D100FB0BFC /* MapperModels */ = {
+			isa = PBXGroup;
+			children = (
+				A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */,
+			);
+			path = MapperModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +418,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E1D232279FD9E100FB0BFC /* FeedContainerMapper.swift in Sources */,
 				A1E1D1E8279DBD9B00FB0BFC /* FeedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
