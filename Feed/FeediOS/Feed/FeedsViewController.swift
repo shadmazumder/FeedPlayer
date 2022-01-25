@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Feed
 
 public class FeedsViewController: UIViewController {
     @IBOutlet weak var feedTableView: UITableView!
+    public var loader: Loader?
     
     public private(set) lazy var dataSource: UITableViewDiffableDataSource<Int, FeedViewModel> = {
         .init(tableView: feedTableView) { [weak self] (_, _, feed) in
@@ -18,5 +20,14 @@ public class FeedsViewController: UIViewController {
     
     private func configuredFeedCell(for feed: FeedViewModel) -> UITableViewCell{
         return UITableViewCell()
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        loadFeeds()
+    }
+    
+    private func loadFeeds(){
+        loader?.load(completion: { _ in })
     }
 }
