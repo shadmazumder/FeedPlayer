@@ -25,6 +25,7 @@
 		A1E1D232279FD9E100FB0BFC /* FeedContainerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */; };
 		A1E1D234279FDA3D00FB0BFC /* FeedModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */; };
 		A1E1D237279FE07800FB0BFC /* FeedClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D236279FE07800FB0BFC /* FeedClientSpy.swift */; };
+		A1E1D238279FE0C200FB0BFC /* FeedClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D236279FE07800FB0BFC /* FeedClientSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -453,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1E1D20F279DE95700FB0BFC /* FeediOSTests.swift in Sources */,
+				A1E1D238279FE0C200FB0BFC /* FeedClientSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
