@@ -49,7 +49,7 @@ class FeediOSTests: XCTestCase {
     }
     
     func test_rendersCell_onValidFeeds() {
-        let feedContainerData = FeedMapperProvider.anyFeedContainerWithData([FeedMapperProvider.anyFeedMapper])
+        let feedContainerData = anyFeedContainerWithData([anyFeedMapper])
         let (sut, client) = makeSUT()
         
         sut.loadViewIfNeeded()

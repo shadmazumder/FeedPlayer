@@ -50,7 +50,7 @@ class LocalLoaderTests: XCTestCase {
     
     func test_load_deliversItems_ForJSONItems() {
         let (sut, client) = makeSUT()
-        let feedContainerWithData = FeedMapperProvider.anyFeedContainerWithData([FeedMapperProvider.anyFeedMapper])
+        let feedContainerWithData = anyFeedContainerWithData([anyFeedMapper])
 
         expect(sut, tocompleteWith: .success(feedContainerWithData.feedContainerMapper.model)) {
             client.completeWith(feedContainerWithData.data)
@@ -64,7 +64,7 @@ class LocalLoaderTests: XCTestCase {
         sut?.load(completion: { receivedResult = $0 })
 
         sut = nil
-        client.completeWith(FeedMapperProvider.anyFeedContainerWithData([FeedMapperProvider.anyFeedMapper]).data)
+        client.completeWith(anyFeedContainerWithData([anyFeedMapper]).data)
 
         XCTAssertNil(receivedResult)
     }

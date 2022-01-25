@@ -5,10 +5,10 @@
 //  Created by Shad Mazumder on 25/1/22.
 //
 
-import Foundation
+import XCTest
 
-struct FeedMapperProvider {
-    static func anyFeedContainerWithData(_ feedMappers: [FeedModelMapper]) -> (feedContainerMapper: FeedContainerMapper, data: Data) {
+extension XCTestCase{
+    func anyFeedContainerWithData(_ feedMappers: [FeedModelMapper]) -> (feedContainerMapper: FeedContainerMapper, data: Data) {
         let feedContainer = FeedContainerMapper(feeds: feedMappers)
         let encoder = JSONEncoder()
         let data = try! encoder.encode(feedContainer)
@@ -16,7 +16,7 @@ struct FeedMapperProvider {
         return (feedContainer, data)
     }
 
-    static var anyFeedMapper: FeedModelMapper{
+    var anyFeedMapper: FeedModelMapper{
         FeedModelMapper(title: "any title", description: "any description", source: "any-source")
     }
 }
