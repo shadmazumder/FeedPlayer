@@ -48,6 +48,17 @@ class FeediOSTests: XCTestCase {
         
     }
     
+    func test_rendersCell_onValidFeeds() {
+        let feedContainerData = FeedMapperProvider.anyFeedContainerWithData([FeedMapperProvider.anyFeedMapper])
+        let (sut, client) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        
+        client.completeWith(feedContainerData.data)
+        
+        XCTAssertNotNil(sut.cell())
+    }
+    
     // MARK: - Helper
     private func makeSUT(uri: String = FeediOSTests.anyURI) -> (sut: FeedsViewController, client: FeedClientSpy){
         let clientSpy = FeedClientSpy()
@@ -77,5 +88,11 @@ private class FeedsErrorHandler: FeedsViewControllerErrorDelegate{
         didSet{
             exp.fulfill()
         }
+    }
+}
+
+extension FeedsViewController{
+    func cell(_ index: Int = 0) -> UITableViewCell{
+        dataSource.tableView(feedTableView, cellForRowAt: IndexPath(row: index, section: 0))
     }
 }

@@ -50,7 +50,7 @@ class LocalLoaderTests: XCTestCase {
     
     func test_load_deliversItems_ForJSONItems() {
         let (sut, client) = makeSUT()
-        let feedContainerWithData = anyFeedContainerWithData([anyFeedMapper])
+        let feedContainerWithData = FeedMapperProvider.anyFeedContainerWithData([FeedMapperProvider.anyFeedMapper])
 
         expect(sut, tocompleteWith: .success(feedContainerWithData.feedContainerMapper.model)) {
             client.completeWith(feedContainerWithData.data)
@@ -64,7 +64,7 @@ class LocalLoaderTests: XCTestCase {
         sut?.load(completion: { receivedResult = $0 })
 
         sut = nil
-        client.completeWith(anyFeedContainerWithData([anyFeedMapper]).data)
+        client.completeWith(FeedMapperProvider.anyFeedContainerWithData([FeedMapperProvider.anyFeedMapper]).data)
 
         XCTAssertNil(receivedResult)
     }
@@ -123,17 +123,5 @@ class LocalLoaderTests: XCTestCase {
         action()
 
         wait(for: [exp], timeout: 1.0)
-    }
-    
-    private func anyFeedContainerWithData(_ feedMappers: [FeedModelMapper]) -> (feedContainerMapper: FeedContainerMapper, data: Data) {
-        let feedContainer = FeedContainerMapper(feeds: feedMappers)
-        let encoder = JSONEncoder()
-        let data = try! encoder.encode(feedContainer)
-
-        return (feedContainer, data)
-    }
-    
-    private var anyFeedMapper: FeedModelMapper{
-        FeedModelMapper(title: "any title", description: "any description", source: "any-source")
     }
 }
