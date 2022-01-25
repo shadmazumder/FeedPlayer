@@ -8,10 +8,7 @@
 import Foundation
 
 public protocol Loader {
-    associatedtype APIModel: Decodable
-    associatedtype LoaderError: Error
-    
-    typealias Result = Swift.Result<APIModel, LoaderError>
+    typealias Result = Swift.Result<FeedModelContainer, Error>
 
     func load(completion: @escaping ((Result) -> Void))
 }

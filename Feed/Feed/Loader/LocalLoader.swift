@@ -7,10 +7,7 @@
 
 import Foundation
 
-public class LocalLoader<T: Decodable>: Loader{
-    public typealias APIModel = T
-    public typealias LoaderError = Error
-    
+public class LocalLoader: Loader{
     public enum Error: Swift.Error {
         case resourceNotFound
         case invalidData
@@ -25,32 +22,32 @@ public class LocalLoader<T: Decodable>: Loader{
         self.client = client
     }
     
-    public func load(completion: @escaping ((Result<APIModel, LoaderError>) -> Void)){
+    public func load(completion: @escaping ((Loader.Result) -> Void)) {
         client.get(from: uri){ [weak self] result in
             switch result {
             case let .success(data):
                 self?.mapSuccessFrom(data, completion)
             default:
-                completion(.failure(.resourceNotFound))
+                completion(.failure(Error.resourceNotFound))
             }
         }
     }
     
-    private func mapSuccessFrom(_ data: Data, _ completion: @escaping ((Result<APIModel, LoaderError>) -> Void)) {
+    private func mapSuccessFrom(_ data: Data, _ completion: @escaping ((Loader.Result) -> Void)) {
         do {
             let jsonDecoder = JSONDecoder()
-            let root = try jsonDecoder.decode(T.self, from: data)
+            let root = try jsonDecoder.decode(FeedModelContainer.self, from: data)
             completion(.success(root))
         } catch {
             mapErrorFrom(error, completion)
         }
     }
     
-    private func mapErrorFrom(_ error: Swift.Error, _ completion: ((Result<APIModel, LoaderError>) -> Void)) {
+    private func mapErrorFrom(_ error: Swift.Error, _ completion: ((Loader.Result) -> Void)) {
         if let decodingError = error as? DecodingError {
-            completion(.failure(.decoding(decodingError)))
+            completion(.failure(Error.decoding(decodingError)))
         }else {
-            completion(.failure(.invalidData))
+            completion(.failure(Error.invalidData))
         }
     }
 }

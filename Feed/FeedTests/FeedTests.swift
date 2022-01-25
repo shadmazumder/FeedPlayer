@@ -40,54 +40,47 @@ class LocalLoaderTests: XCTestCase {
     
     func test_load_deliversEmptyItems_ForEmptyJSON() {
         let (sut, client) = makeSUT()
-        let emptyEntities = ""
+        let root = FeedContainerMapper(feeds: [FeedModelMapper]())
 
-        expect(sut, tocompleteWith: .success("")) {
-            let data = try! JSONEncoder().encode(emptyEntities)
+        expect(sut, tocompleteWith: .success(root.model)) {
+            let data = try! JSONEncoder().encode(root)
             client.completeWith(data)
         }
     }
     
     func test_load_deliversItems_ForJSONItems() {
         let (sut, client) = makeSUT()
-        let jsonWithData = anyValidJsonStringWithData()
+        let feedContainerWithData = anyFeedContainerWithData([anyFeedMapper])
 
-        expect(sut, tocompleteWith: .success(jsonWithData.validJsonString)) {
-            client.completeWith(jsonWithData.data)
+        expect(sut, tocompleteWith: .success(feedContainerWithData.feedContainerMapper.model)) {
+            client.completeWith(feedContainerWithData.data)
         }
     }
     
     func test_load_doesNotDeliverResultAfterSUTBeenDeallocated() {
         let client = FeedClientSpy()
-        var sut: LocalLoaderStringType? = LocalLoaderStringType(uri: anyURI, client: client)
-        var receivedResult: LocalLoaderStringType.Result?
+        var sut: LocalLoader? = LocalLoader(uri: anyURI, client: client)
+        var receivedResult: LocalLoader.Result?
         sut?.load(completion: { receivedResult = $0 })
 
         sut = nil
-        client.completeWith(anyValidJsonStringWithData().data)
+        client.completeWith(anyFeedContainerWithData([anyFeedMapper]).data)
 
         XCTAssertNil(receivedResult)
     }
     
     func test_load_deliverDecodingError_onFaultyKeyNameForJson() {
-        typealias TitleFeedLocalLoader = LocalLoader<TitleFeed>
-        
-        struct TitleFeed: Decodable{
-            let title: String
-        }
-        
-        let validJsonString = "{\"name\":\"any title\"}"
-        let jsonWithData = anyValidJsonStringWithData(validJsonString)
-        
+        let emptyEntities = ""
+
         let client = FeedClientSpy()
-        let sut = TitleFeedLocalLoader(uri: anyURI, client: client)
+        let sut = LocalLoader(uri: anyURI, client: client)
 
         let exp = expectation(description: "Waiting for the client")
-        
+
         sut.load { result in
             switch result {
             case let .failure(receivedError):
-                if case TitleFeedLocalLoader.Error.decoding = receivedError {
+                if case LocalLoader.Error.decoding = receivedError {
                     exp.fulfill()
                 }else{
                     fallthrough
@@ -96,30 +89,28 @@ class LocalLoaderTests: XCTestCase {
                 XCTFail("Expected Failure but got \(result)")
             }
         }
-        
-        client.completeWith(jsonWithData.data)
-        
+
+        client.completeWith(Data(emptyEntities.utf8))
+
         wait(for: [exp], timeout: 1.0)
     }
     
     // MARK: - Helper
-    private typealias LocalLoaderStringType = LocalLoader<String>
-    
-    private func makeSUT(_ uri: String = "") -> (sut: LocalLoaderStringType, client: FeedClientSpy){
+    private func makeSUT(_ uri: String = "") -> (sut: LocalLoader, client: FeedClientSpy){
         let client = FeedClientSpy()
-        let sut = LocalLoaderStringType(uri: uri, client: client)
+        let sut = LocalLoader(uri: uri, client: client)
         return (sut, client)
     }
     
     private let anyURI = "any-uri"
     
-    private func expect(_ sut: LocalLoaderStringType, tocompleteWith expectedResult: LocalLoaderStringType.Result, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: LocalLoader, tocompleteWith expectedResult: Loader.Result, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Waiting for the client")
 
         sut.load { result in
             switch (result, expectedResult) {
             case let (.success(recieved), .success(expected)):
-                XCTAssertEqual(recieved, expected, file: file, line: line)
+                XCTAssertEqual(recieved.feeds.mapToMapper, expected.feeds.mapToMapper, file: file, line: line)
             case let (.failure(receivedError), .failure(expectedError)):
                 XCTAssertEqual(receivedError.localizedDescription, expectedError.localizedDescription, file: file, line: line)
 
@@ -134,11 +125,16 @@ class LocalLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func anyValidJsonStringWithData(_ validJsonString: String = "{\"title\":\"any title\"}") -> (validJsonString: String, data: Data) {
+    private func anyFeedContainerWithData(_ feedMappers: [FeedModelMapper]) -> (feedContainerMapper: FeedContainerMapper, data: Data) {
+        let feedContainer = FeedContainerMapper(feeds: feedMappers)
         let encoder = JSONEncoder()
-        let data = try! encoder.encode(validJsonString)
+        let data = try! encoder.encode(feedContainer)
 
-        return (validJsonString, data)
+        return (feedContainer, data)
+    }
+    
+    private var anyFeedMapper: FeedModelMapper{
+        FeedModelMapper(title: "any title", description: "any description", source: "any-source")
     }
 }
 
@@ -159,4 +155,38 @@ class FeedClientSpy: Client {
     func completeWith(_ data: Data, index: Int = 0) {
         message[index].completion(.success((data)))
     }
+}
+
+struct FeedModelMapper: Equatable, Encodable {
+    let title: String
+    let description: String
+    let source: String
+}
+
+extension FeedModelMapper{
+    var model: FeedModel{
+        FeedModel(title: title, description: description, source: source)
+    }
+}
+
+extension FeedModel{
+    var mapper: FeedModelMapper{
+        FeedModelMapper(title: title, description: description, source: source)
+    }
+}
+
+extension Array where Element == FeedModelMapper{
+    var mapToModel: [FeedModel]{ map({ $0.model }) }
+}
+
+extension Array where Element == FeedModel{
+    var mapToMapper: [FeedModelMapper]{ map({ $0.mapper }) }
+}
+
+struct FeedContainerMapper: Encodable {
+    let feeds: [FeedModelMapper]
+}
+
+extension FeedContainerMapper{
+    var model: FeedModelContainer{ FeedModelContainer(feeds: feeds.mapToModel) }
 }
