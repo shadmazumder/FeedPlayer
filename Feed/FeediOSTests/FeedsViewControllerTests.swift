@@ -1,5 +1,5 @@
 //
-//  FeediOSTests.swift
+//  FeedsViewControllerTests.swift
 //  FeediOSTests
 //
 //  Created by Shad Mazumder on 24/1/22.
@@ -9,7 +9,7 @@ import XCTest
 import Feed
 import FeediOS
 
-class FeediOSTests: XCTestCase {
+class FeedsViewControllerTests: XCTestCase {
     func test_loadFromStoryboard_returnsFeedViewController() {
         XCTAssertTrue(launchesViewControllerFromFeedsSotyboard() is FeedsViewController, "Initial ViewController is not FeedsViewController")
     }
@@ -21,7 +21,7 @@ class FeediOSTests: XCTestCase {
     }
     
     func test_load_initiateFeedRequest() {
-        let anyURI = FeediOSTests.anyURI
+        let anyURI = XCTestCase.anyURI
         let (sut, client) = makeSUT(uri: anyURI)
         
         sut.loadViewIfNeeded()
