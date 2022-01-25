@@ -10,5 +10,5 @@ import Foundation
 public protocol Loader {
     typealias Result = Swift.Result<FeedModelContainer, Error>
 
-    func load(completion: @escaping ((Result) -> Void))
+    func load(from startingIndex: Int, completion: @escaping ((Result) -> Void))
 }

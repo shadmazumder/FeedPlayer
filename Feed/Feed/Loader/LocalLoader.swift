@@ -22,8 +22,8 @@ public class LocalLoader: Loader{
         self.client = client
     }
     
-    public func load(completion: @escaping ((Loader.Result) -> Void)) {
-        client.get(from: uri){ [weak self] result in
+    public func load(from startingIndex: Int, completion: @escaping ((Loader.Result) -> Void)) {
+        client.get(from: uri, startingIndex){ [weak self] result in
             switch result {
             case let .success(data):
                 self?.mapSuccessFrom(data, completion)

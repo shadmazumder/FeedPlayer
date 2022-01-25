@@ -17,15 +17,15 @@ class LocalLoaderTests: XCTestCase {
     func test_load_requestDataFromURI() {
         let anyURI = anyURI
         let (sut, client) = makeSUT(anyURI)
-        sut.load() { _ in }
+        sut.load(from: 0) { _ in }
         XCTAssertTrue(client.requestedURI == [anyURI])
     }
     
     func test_loadTwice_requestDataFromURITwice() {
         let anyURI = anyURI
         let (sut, client) = makeSUT(anyURI)
-        sut.load() { _ in }
-        sut.load() { _ in }
+        sut.load(from: 0) { _ in }
+        sut.load(from: 0) { _ in }
         XCTAssertTrue(client.requestedURI == [anyURI, anyURI])
     }
     
@@ -61,7 +61,7 @@ class LocalLoaderTests: XCTestCase {
         let client = FeedClientSpy()
         var sut: LocalLoader? = LocalLoader(uri: anyURI, client: client)
         var receivedResult: LocalLoader.Result?
-        sut?.load(completion: { receivedResult = $0 })
+        sut?.load(from: 0, completion: { receivedResult = $0 })
 
         sut = nil
         client.completeWith(anyFeedContainerWithData([anyFeedMapper]).data)
@@ -77,7 +77,7 @@ class LocalLoaderTests: XCTestCase {
 
         let exp = expectation(description: "Waiting for the client")
 
-        sut.load { result in
+        sut.load(from: 0) { result in
             switch result {
             case let .failure(receivedError):
                 if case LocalLoader.Error.decoding = receivedError {
@@ -107,7 +107,7 @@ class LocalLoaderTests: XCTestCase {
     private func expect(_ sut: LocalLoader, tocompleteWith expectedResult: Loader.Result, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Waiting for the client")
 
-        sut.load { result in
+        sut.load(from: 0) { result in
             switch (result, expectedResult) {
             case let (.success(recieved), .success(expected)):
                 XCTAssertEqual(recieved.feeds.mapToMapper, expected.feeds.mapToMapper, file: file, line: line)

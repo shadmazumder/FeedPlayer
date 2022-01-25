@@ -14,7 +14,7 @@ class FeedClientSpy: Client {
         message.map({ $0.uri })
     }
     
-    func get(from uri: String, completion: @escaping (Client.Result) -> Void){
+    func get(from uri: String, _ startingIndex: Int, completion: @escaping (Client.Result) -> Void){
         message.append((uri, completion))
     }
     

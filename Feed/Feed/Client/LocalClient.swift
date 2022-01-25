@@ -12,7 +12,7 @@ public struct LocalClient: Client {
         case corruptedData
     }
     
-    public func get(from uri: String, completion: @escaping (Client.Result) -> Void) {
+    public func get(from uri: String, _ startingIndex: Int, completion: @escaping (Client.Result) -> Void) {
         do{
             completion(.success(try Data(contentsOf: URL(fileURLWithPath: uri))))
         }catch {

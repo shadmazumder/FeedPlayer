@@ -9,5 +9,5 @@ import Foundation
 
 public protocol Client {
     typealias Result = Swift.Result<Data, Error>
-    func get(from uri: String, completion: @escaping (Result) -> Void)
+    func get(from uri: String, _ startingIndex: Int, completion: @escaping (Result) -> Void)
 }
