@@ -8,6 +8,7 @@
 import XCTest
 import Feed
 import FeediOS
+import AVFoundation
 
 class FeedTableViewCellTests: XCTestCase {
     func test_rendersFeedCell_onValidFeeds() {
@@ -27,5 +28,36 @@ class FeedTableViewCellTests: XCTestCase {
         
         
         XCTAssertNotNil(sut.cell() as? FeedTableViewCell)
+    }
+    
+    func test_playsVideo_onWillDisplay() {
+        let sut = renderedSUT(with: [anyFeedMapper])
+        let player = PlayerSpy()
+        sut.playerDelegate = PlayerContainer(spyPlayer: player)
+        sut.willDisplayCell()
+        
+        XCTAssertEqual(player.states, [.play])
+    }
+}
+
+private class PlayerContainer: PlayerDelegate{
+    var player: AVPlayer
+    
+    init(spyPlayer: PlayerSpy) {
+        player = spyPlayer
+    }
+    
+    func logMessage(_ message: String?) {}
+}
+
+private class PlayerSpy: AVPlayer{
+    enum State {
+        case play
+    }
+    
+    var states = [State]()
+    
+    override func playImmediately(atRate rate: Float) {
+        states.append(.play)
     }
 }

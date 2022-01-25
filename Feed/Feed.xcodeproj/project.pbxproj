@@ -14,6 +14,9 @@
 		A1D4EF3F27A03AAB001BB09E /* FeedsViewController+TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF3E27A03AAB001BB09E /* FeedsViewController+TestHelper.swift */; };
 		A1D4EF4127A03B98001BB09E /* XCTestCase+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF4027A03B98001BB09E /* XCTestCase+Helper.swift */; };
 		A1D4EF4327A03E01001BB09E /* FeedTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF4227A03E01001BB09E /* FeedTableViewCellTests.swift */; };
+		A1D4EF4627A048AF001BB09E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF4527A048AF001BB09E /* Logger.swift */; };
+		A1D4EF4927A04921001BB09E /* PlayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF4827A04921001BB09E /* PlayerDelegate.swift */; };
+		A1D4EF4B27A04942001BB09E /* PlayerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF4A27A04942001BB09E /* PlayerProvider.swift */; };
 		A1E1D1E3279DBD9B00FB0BFC /* Feed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E1D1DA279DBD9B00FB0BFC /* Feed.framework */; };
 		A1E1D1E8279DBD9B00FB0BFC /* LocalLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D1E7279DBD9B00FB0BFC /* LocalLoaderTests.swift */; };
 		A1E1D1F4279DD6A700FB0BFC /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D1F3279DD6A700FB0BFC /* Loader.swift */; };
@@ -82,6 +85,9 @@
 		A1D4EF3E27A03AAB001BB09E /* FeedsViewController+TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsViewController+TestHelper.swift"; sourceTree = "<group>"; };
 		A1D4EF4027A03B98001BB09E /* XCTestCase+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helper.swift"; sourceTree = "<group>"; };
 		A1D4EF4227A03E01001BB09E /* FeedTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCellTests.swift; sourceTree = "<group>"; };
+		A1D4EF4527A048AF001BB09E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		A1D4EF4827A04921001BB09E /* PlayerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDelegate.swift; sourceTree = "<group>"; };
+		A1D4EF4A27A04942001BB09E /* PlayerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProvider.swift; sourceTree = "<group>"; };
 		A1E1D1DA279DBD9B00FB0BFC /* Feed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Feed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1E1D1E2279DBD9B00FB0BFC /* FeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1E1D1E7279DBD9B00FB0BFC /* LocalLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLoaderTests.swift; sourceTree = "<group>"; };
@@ -150,6 +156,23 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		A1D4EF4427A04890001BB09E /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				A1D4EF4527A048AF001BB09E /* Logger.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		A1D4EF4727A0490F001BB09E /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				A1D4EF4827A04921001BB09E /* PlayerDelegate.swift */,
+				A1D4EF4A27A04942001BB09E /* PlayerProvider.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		A1E1D1D0279DBD9B00FB0BFC = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +230,7 @@
 			children = (
 				A1E1D24827A02B2400FB0BFC /* Helper */,
 				A1E1D217279DEC6500FB0BFC /* Feed */,
+				A1D4EF4427A04890001BB09E /* Logger */,
 			);
 			path = FeediOS;
 			sourceTree = "<group>";
@@ -224,6 +248,7 @@
 		A1E1D217279DEC6500FB0BFC /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				A1D4EF4727A0490F001BB09E /* Player */,
 				A1E1D23927A029B000FB0BFC /* Feeds.storyboard */,
 				A1E1D23A27A029B000FB0BFC /* FeedTableViewCell.swift */,
 				A1E1D23C27A029B100FB0BFC /* FeedViewController */,
@@ -498,10 +523,13 @@
 			files = (
 				A1E1D24A27A02B3200FB0BFC /* UITableView+DequeCell.swift in Sources */,
 				A1E1D24427A029B100FB0BFC /* FeedsViewController.swift in Sources */,
+				A1D4EF4B27A04942001BB09E /* PlayerProvider.swift in Sources */,
 				A1E1D24627A029B100FB0BFC /* FeedsViewController+TableViewDelegate.swift in Sources */,
 				A1E1D24727A029B100FB0BFC /* FeedViewModel.swift in Sources */,
+				A1D4EF4627A048AF001BB09E /* Logger.swift in Sources */,
 				A1E1D24227A029B100FB0BFC /* FeedTableViewCell.swift in Sources */,
 				A1E1D24327A029B100FB0BFC /* PlayerView.swift in Sources */,
+				A1D4EF4927A04921001BB09E /* PlayerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

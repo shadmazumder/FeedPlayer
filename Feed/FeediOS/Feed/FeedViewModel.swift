@@ -24,7 +24,6 @@ extension Array where Element == FeedModel{
     var viewModels: [FeedViewModel]{ map({ $0.viewModel }) }
 }
 
-
 extension FeedModelContainer{
     var feedViewModel: [FeedViewModel]{ feeds.viewModels }
 }

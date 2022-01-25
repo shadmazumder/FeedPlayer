@@ -31,8 +31,9 @@ public class FeedTableViewCell: UITableViewCell {
         feedDescription.text = nil
     }
     
-    func play(on player: AVPlayer?,for source: String?){
+    func play(on player: AVPlayer?,for source: String?, logger: Logger?){
         guard let source = source, let url = URL(string: source) else {
+            logger?.logMessage(source)
             return
         }
         playerView.player = player

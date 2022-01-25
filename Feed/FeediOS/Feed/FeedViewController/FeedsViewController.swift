@@ -14,6 +14,7 @@ public protocol FeedsViewControllerErrorDelegate {
 
 public class FeedsViewController: UIViewController {
     @IBOutlet weak public private(set) var feedTableView: UITableView!
+    public var playerDelegate: PlayerDelegate?
     
     public var loader: Loader?
     public var errorHandler: FeedsViewControllerErrorDelegate?
