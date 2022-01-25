@@ -27,4 +27,9 @@ extension FeedsViewController{
     func didEndDisplay(_ index: Int = 0){
         feedTableView.delegate?.tableView?(feedTableView, didEndDisplaying: cell(index), forRowAt: indexPath(index))
     }
+    
+    func prefetchRows(indices: [Int] ){
+        let indexPaths = indices.map({ indexPath($0) })
+        feedTableView.prefetchDataSource?.tableView(feedTableView, prefetchRowsAt: indexPaths)
+    }
 }

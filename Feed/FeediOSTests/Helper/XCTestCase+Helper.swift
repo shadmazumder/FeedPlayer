@@ -13,7 +13,7 @@ extension XCTestCase{
     func makeSUT(uri: String = XCTestCase.anyURI) -> (sut: FeedsViewController, client: FeedClientSpy){
         let clientSpy = FeedClientSpy()
         let sut = launchesViewControllerFromFeedsSotyboard() as! FeedsViewController
-        sut.loader = LocalLoader(uri: uri, client: clientSpy)
+        sut.loader = LocalLoader(uri: uri, client: clientSpy, feedGenerator: FeedGenerator())
         
         return (sut, clientSpy)
     }

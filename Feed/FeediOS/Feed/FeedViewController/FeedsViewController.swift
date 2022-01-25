@@ -34,17 +34,18 @@ public class FeedsViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        loadFeeds()
+        loadFeeds(startingIndex: 0)
     }
     
     private func configureTableView(){
         dataSource.defaultRowAnimation = .automatic
         feedTableView.dataSource = dataSource
         feedTableView.delegate = self
+        feedTableView.prefetchDataSource = self
     }
     
-    private func loadFeeds(){
-        loader?.load(completion: { [weak self] result in
+    private func loadFeeds(startingIndex: Int){
+        loader?.load(from: startingIndex, completion: { [weak self] result in
             switch result {
             case let .success(feedContainer):
                 self?.diffarableReload(with: feedContainer.feedViewModel)
@@ -52,6 +53,10 @@ public class FeedsViewController: UIViewController {
                 self?.errorHandler?.errorState = failure
             }
         })
+    }
+    
+    func loadNextFeeds(){
+        loadFeeds(startingIndex: dataSource.snapshot().numberOfItems)
     }
     
     private func diffarableReload(with latestFeeds: [FeedViewModel]){

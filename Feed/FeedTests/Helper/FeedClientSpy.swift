@@ -10,11 +10,14 @@ import Feed
 
 class FeedClientSpy: Client {
     var message = [(uri: String, completion: (Result) -> Void)]()
+    var startingIndexCounter = [Int]()
+    
     var requestedURI: [String] {
         message.map({ $0.uri })
     }
     
     func get(from uri: String, _ startingIndex: Int, completion: @escaping (Client.Result) -> Void){
+        startingIndexCounter.append(startingIndex)
         message.append((uri, completion))
     }
     
