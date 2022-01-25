@@ -8,9 +8,14 @@
 import UIKit
 import Feed
 
+public protocol FeedsViewControllerErrorDelegate {
+    var errorState: Error? { get set }
+}
+
 public class FeedsViewController: UIViewController {
     @IBOutlet weak var feedTableView: UITableView!
     public var loader: Loader?
+    public var errorHandler: FeedsViewControllerErrorDelegate?
     
     public private(set) lazy var dataSource: UITableViewDiffableDataSource<Int, FeedViewModel> = {
         .init(tableView: feedTableView) { [weak self] (_, _, feed) in
@@ -28,6 +33,13 @@ public class FeedsViewController: UIViewController {
     }
     
     private func loadFeeds(){
-        loader?.load(completion: { _ in })
+        loader?.load(completion: { result in
+            switch result {
+            case .success:
+                break
+            case .failure(let failure):
+                self.errorHandler?.errorState = failure
+            }
+        })
     }
 }
