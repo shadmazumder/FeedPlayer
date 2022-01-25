@@ -10,7 +10,7 @@ import Feed
 import FeediOS
 
 class FeedTableViewCellTests: XCTestCase {
-    func test_rendersFeedTableViewCell_onValidFeeds() {
+    func test_rendersFeedCell_onValidFeeds() {
         let feedContainerData = anyFeedContainerWithData([anyFeedMapper])
         let (sut, client) = makeSUT()
         
@@ -21,7 +21,7 @@ class FeedTableViewCellTests: XCTestCase {
         XCTAssertNotNil(sut.cell() as? FeedTableViewCell)
     }
     
-    func test_feedTableViewCell_rendersFeedProperty() {
+    func test_feedCell_rendersFeedProperty() {
         let feed = anyFeedMapper.model
         let feedContainerData = anyFeedContainerWithData([feed.mapper])
         let (sut, client) = makeSUT()
