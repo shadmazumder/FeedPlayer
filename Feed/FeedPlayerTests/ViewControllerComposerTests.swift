@@ -35,7 +35,7 @@ class FeedsViewControllerComposer{
     }()
     
     private func configure(_ feedsViewController: FeedsViewController){
-        feedsViewController.playerDelegate = FeedPlayer(feedLoagger: logger)
+        feedsViewController.playerDelegate = FeedPlayer(feedLogger: logger)
         feedsViewController.errorHandler = FeedErrorHandler(presentingViewController: feedsViewController)
         configureLocalLoader(for: feedsViewController, logErrorOn: logger)
     }
@@ -57,17 +57,6 @@ class FeedsViewControllerComposer{
         }
         let localLoader = LocalLoader(uri: path, client: LocalClient(), feedGenerator: FeedGenerator())
         return (localLoader, nil)
-    }
-}
-
-import AVFoundation
-
-struct FeedPlayer: PlayerDelegate {
-    var feedLoagger: Logger
-    var player: AVPlayer{ AVPlayer() }
-    
-    func logMessage(_ message: String?) {
-        feedLoagger.logMessage(message)
     }
 }
 

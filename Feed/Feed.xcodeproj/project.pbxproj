@@ -27,6 +27,8 @@
 		A102D47327A14B33004F4106 /* XCTTestCase+MemoryLeakTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D47027A14AA4004F4106 /* XCTTestCase+MemoryLeakTrack.swift */; };
 		A102D47627A14DAA004F4106 /* FeedErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D47527A14DAA004F4106 /* FeedErrorHandler.swift */; };
 		A102D47927A15545004F4106 /* FeedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D47827A15545004F4106 /* FeedLogger.swift */; };
+		A102D47D27A15620004F4106 /* FeedPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D47C27A15620004F4106 /* FeedPlayer.swift */; };
+		A102D47F27A156B2004F4106 /* FeedPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D47E27A156B2004F4106 /* FeedPlayerTests.swift */; };
 		A1D4EF3827A033BA001BB09E /* FeedContainerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */; };
 		A1D4EF3927A033BD001BB09E /* FeedModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */; };
 		A1D4EF3B27A033D5001BB09E /* FeedMapperProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */; };
@@ -153,6 +155,8 @@
 		A102D47027A14AA4004F4106 /* XCTTestCase+MemoryLeakTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTTestCase+MemoryLeakTrack.swift"; sourceTree = "<group>"; };
 		A102D47527A14DAA004F4106 /* FeedErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorHandler.swift; sourceTree = "<group>"; };
 		A102D47827A15545004F4106 /* FeedLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLogger.swift; sourceTree = "<group>"; };
+		A102D47C27A15620004F4106 /* FeedPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPlayer.swift; sourceTree = "<group>"; };
+		A102D47E27A156B2004F4106 /* FeedPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPlayerTests.swift; sourceTree = "<group>"; };
 		A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMapperProvider.swift; sourceTree = "<group>"; };
 		A1D4EF3E27A03AAB001BB09E /* FeedsViewController+TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsViewController+TestHelper.swift"; sourceTree = "<group>"; };
 		A1D4EF4027A03B98001BB09E /* XCTestCase+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helper.swift"; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 				A102D46D27A12216004F4106 /* Helper */,
 				A102D44927A0809E004F4106 /* ViewControllerComposerTests.swift */,
 				A102D46B27A121C8004F4106 /* ErrorHandlerTests.swift */,
+				A102D47E27A156B2004F4106 /* FeedPlayerTests.swift */,
 			);
 			path = FeedPlayerTests;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 			children = (
 				A102D47527A14DAA004F4106 /* FeedErrorHandler.swift */,
 				A102D47827A15545004F4106 /* FeedLogger.swift */,
+				A102D47C27A15620004F4106 /* FeedPlayer.swift */,
 			);
 			path = Feeds;
 			sourceTree = "<group>";
@@ -720,6 +726,7 @@
 			files = (
 				A102D43727A08098004F4106 /* ViewController.swift in Sources */,
 				A102D47927A15545004F4106 /* FeedLogger.swift in Sources */,
+				A102D47D27A15620004F4106 /* FeedPlayer.swift in Sources */,
 				A102D47627A14DAA004F4106 /* FeedErrorHandler.swift in Sources */,
 				A102D43327A08098004F4106 /* AppDelegate.swift in Sources */,
 				A102D43527A08098004F4106 /* SceneDelegate.swift in Sources */,
@@ -730,6 +737,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A102D47F27A156B2004F4106 /* FeedPlayerTests.swift in Sources */,
 				A102D44A27A0809E004F4106 /* ViewControllerComposerTests.swift in Sources */,
 				A102D46F27A12256004F4106 /* ComposerTestsHelper.swift in Sources */,
 				A102D46C27A121C8004F4106 /* ErrorHandlerTests.swift in Sources */,
