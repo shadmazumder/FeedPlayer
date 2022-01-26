@@ -44,7 +44,9 @@ struct FeedsViewControllerComposer{
     }
     
     private func makeFailableLocalLoader() -> (localLoader: LocalLoader?, errorMessage: String?){
-        guard let path = Bundle.main.path(forResource: jsonFeedFileName, ofType: ".json") else {
+        let allJsonPaths = Bundle.main.paths(forResourcesOfType: ".json", inDirectory: nil)
+        
+        guard let path = allJsonPaths.filter({ $0.contains(jsonFeedFileName) }).first else {
             return (nil, "Json file was not found on the path")
         }
         let localLoader = LocalLoader(uri: path, client: LocalClient(), feedGenerator: FeedGenerator())
