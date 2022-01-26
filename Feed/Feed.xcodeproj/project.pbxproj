@@ -11,7 +11,6 @@
 		A102D42B27A075BF004F4106 /* NonUniqueFeedGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D42927A075B5004F4106 /* NonUniqueFeedGenerator.swift */; };
 		A102D43327A08098004F4106 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D43227A08098004F4106 /* AppDelegate.swift */; };
 		A102D43527A08098004F4106 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D43427A08098004F4106 /* SceneDelegate.swift */; };
-		A102D43727A08098004F4106 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D43627A08098004F4106 /* ViewController.swift */; };
 		A102D43C27A0809D004F4106 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A102D43B27A0809D004F4106 /* Assets.xcassets */; };
 		A102D43F27A0809D004F4106 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A102D43D27A0809D004F4106 /* LaunchScreen.storyboard */; };
 		A102D44A27A0809E004F4106 /* ViewControllerComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D44927A0809E004F4106 /* ViewControllerComposerTests.swift */; };
@@ -29,6 +28,7 @@
 		A102D47927A15545004F4106 /* FeedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D47827A15545004F4106 /* FeedLogger.swift */; };
 		A102D47D27A15620004F4106 /* FeedPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D47C27A15620004F4106 /* FeedPlayer.swift */; };
 		A102D47F27A156B2004F4106 /* FeedPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D47E27A156B2004F4106 /* FeedPlayerTests.swift */; };
+		A102D48227A158C1004F4106 /* ResourcePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D48127A158C1004F4106 /* ResourcePaths.swift */; };
 		A1D4EF3827A033BA001BB09E /* FeedContainerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */; };
 		A1D4EF3927A033BD001BB09E /* FeedModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */; };
 		A1D4EF3B27A033D5001BB09E /* FeedMapperProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */; };
@@ -143,7 +143,6 @@
 		A102D43027A08098004F4106 /* FeedPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A102D43227A08098004F4106 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A102D43427A08098004F4106 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A102D43627A08098004F4106 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A102D43B27A0809D004F4106 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A102D43E27A0809D004F4106 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A102D44027A0809D004F4106 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -157,6 +156,7 @@
 		A102D47827A15545004F4106 /* FeedLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLogger.swift; sourceTree = "<group>"; };
 		A102D47C27A15620004F4106 /* FeedPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPlayer.swift; sourceTree = "<group>"; };
 		A102D47E27A156B2004F4106 /* FeedPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPlayerTests.swift; sourceTree = "<group>"; };
+		A102D48127A158C1004F4106 /* ResourcePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcePaths.swift; sourceTree = "<group>"; };
 		A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMapperProvider.swift; sourceTree = "<group>"; };
 		A1D4EF3E27A03AAB001BB09E /* FeedsViewController+TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsViewController+TestHelper.swift"; sourceTree = "<group>"; };
 		A1D4EF4027A03B98001BB09E /* XCTestCase+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helper.swift"; sourceTree = "<group>"; };
@@ -248,11 +248,11 @@
 				A102D47727A154F4004F4106 /* Feeds */,
 				A102D43227A08098004F4106 /* AppDelegate.swift */,
 				A102D43427A08098004F4106 /* SceneDelegate.swift */,
-				A102D43627A08098004F4106 /* ViewController.swift */,
 				A102D46927A11583004F4106 /* JSONFeeds.json */,
 				A102D43B27A0809D004F4106 /* Assets.xcassets */,
 				A102D43D27A0809D004F4106 /* LaunchScreen.storyboard */,
 				A102D44027A0809D004F4106 /* Info.plist */,
+				A102D48127A158C1004F4106 /* ResourcePaths.swift */,
 			);
 			path = FeedPlayer;
 			sourceTree = "<group>";
@@ -724,7 +724,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A102D43727A08098004F4106 /* ViewController.swift in Sources */,
+				A102D48227A158C1004F4106 /* ResourcePaths.swift in Sources */,
 				A102D47927A15545004F4106 /* FeedLogger.swift in Sources */,
 				A102D47D27A15620004F4106 /* FeedPlayer.swift in Sources */,
 				A102D47627A14DAA004F4106 /* FeedErrorHandler.swift in Sources */,

@@ -10,10 +10,6 @@ import FeedPlayer
 import Feed
 import FeediOS
 
-struct ResourcePaths {
-    static let feedsJsonFile = "JSONFeeds"
-}
-
 class FeedsViewControllerComposer{
     private let jsonFeedFileName: String
     private let logger: Logger
