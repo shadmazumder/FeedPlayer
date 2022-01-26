@@ -1,5 +1,5 @@
 //
-//  ComposerTests.swift
+//  ComposerTestsHelper.swift
 //  FeedPlayerTests
 //
 //  Created by Shad Mazumder on 26/1/22.

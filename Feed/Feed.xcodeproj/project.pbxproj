@@ -21,7 +21,7 @@
 		A102D46527A08903004F4106 /* FeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1E1D202279DE95700FB0BFC /* FeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A102D46A27A11583004F4106 /* JSONFeeds.json in Resources */ = {isa = PBXBuildFile; fileRef = A102D46927A11583004F4106 /* JSONFeeds.json */; };
 		A102D46C27A121C8004F4106 /* ErrorHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D46B27A121C8004F4106 /* ErrorHandlerTests.swift */; };
-		A102D46F27A12256004F4106 /* ComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D46E27A12256004F4106 /* ComposerTests.swift */; };
+		A102D46F27A12256004F4106 /* ComposerTestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D46E27A12256004F4106 /* ComposerTestsHelper.swift */; };
 		A1D4EF3827A033BA001BB09E /* FeedContainerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D231279FD9E100FB0BFC /* FeedContainerMapper.swift */; };
 		A1D4EF3927A033BD001BB09E /* FeedModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E1D233279FDA3D00FB0BFC /* FeedModelMapper.swift */; };
 		A1D4EF3B27A033D5001BB09E /* FeedMapperProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */; };
@@ -144,7 +144,7 @@
 		A102D44927A0809E004F4106 /* ViewControllerComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerComposerTests.swift; sourceTree = "<group>"; };
 		A102D46927A11583004F4106 /* JSONFeeds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JSONFeeds.json; sourceTree = "<group>"; };
 		A102D46B27A121C8004F4106 /* ErrorHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlerTests.swift; sourceTree = "<group>"; };
-		A102D46E27A12256004F4106 /* ComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposerTests.swift; sourceTree = "<group>"; };
+		A102D46E27A12256004F4106 /* ComposerTestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposerTestsHelper.swift; sourceTree = "<group>"; };
 		A1D4EF3A27A033D5001BB09E /* FeedMapperProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMapperProvider.swift; sourceTree = "<group>"; };
 		A1D4EF3E27A03AAB001BB09E /* FeedsViewController+TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsViewController+TestHelper.swift"; sourceTree = "<group>"; };
 		A1D4EF4027A03B98001BB09E /* XCTestCase+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helper.swift"; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 		A102D46D27A12216004F4106 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				A102D46E27A12256004F4106 /* ComposerTests.swift */,
+				A102D46E27A12256004F4106 /* ComposerTestsHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -710,7 +710,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A102D44A27A0809E004F4106 /* ViewControllerComposerTests.swift in Sources */,
-				A102D46F27A12256004F4106 /* ComposerTests.swift in Sources */,
+				A102D46F27A12256004F4106 /* ComposerTestsHelper.swift in Sources */,
 				A102D46C27A121C8004F4106 /* ErrorHandlerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
