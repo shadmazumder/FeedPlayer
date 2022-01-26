@@ -8,7 +8,7 @@
 import UIKit
 import Feed
 
-public protocol FeedsViewControllerErrorDelegate {
+public protocol FeedsViewControllerErrorDelegate: AnyObject {
     var errorState: Error? { get set }
 }
 
@@ -17,7 +17,7 @@ public class FeedsViewController: UIViewController {
     public var playerDelegate: PlayerDelegate?
     
     public var loader: Loader?
-    public var errorHandler: FeedsViewControllerErrorDelegate?
+    public weak var errorHandler: FeedsViewControllerErrorDelegate?
   
     public private(set) lazy var dataSource: UITableViewDiffableDataSource<Int, FeedViewModel> = {
         .init(tableView: feedTableView) { [weak self] (_, _, feed) in

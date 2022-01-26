@@ -31,7 +31,7 @@ class FeedsViewControllerTests: XCTestCase {
     
     func test_onClientError_deliversError() {
         let exp = expectation(description: "Waiting for the client")
-        let errorHandler = FeedsErrorHandler(exp: exp)
+        let errorHandler = FeedsErrorHandler(exp)
         let notFoundError = LocalLoader.Error.resourceNotFound
         
         let (sut, client) = makeSUT()
@@ -77,18 +77,29 @@ class FeedsViewControllerTests: XCTestCase {
         
         return (sut, client)
     }
+    
+    func test_noRetainCycle_btweenViewControllerAndErrorHandler() {
+        let (sut, _) = makeSUT()
+        var feedErrorHandler: FeedsErrorHandler? = FeedsErrorHandler()
+        sut.errorHandler = feedErrorHandler
+        feedErrorHandler?.errorState = NSError(domain: "any-domain", code: 0)
+        
+        feedErrorHandler = nil
+        
+        XCTAssertNil(sut.errorHandler)
+    }
 }
 
 private class FeedsErrorHandler: FeedsViewControllerErrorDelegate{
-    let exp: XCTestExpectation
+    let exp: XCTestExpectation?
     
-    init(exp: XCTestExpectation) {
+    init(_ exp: XCTestExpectation? = nil) {
         self.exp = exp
     }
     
     var errorState: Error?{
         didSet{
-            exp.fulfill()
+            exp?.fulfill()
         }
     }
 }
