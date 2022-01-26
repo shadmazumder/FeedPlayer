@@ -5,7 +5,6 @@
 //  Created by Shad Mazumder on 24/1/22.
 //
 
-import UIKit
 import AVKit
 
 class PlayerView: UIView {

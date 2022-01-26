@@ -13,7 +13,7 @@ public class FeedsViewControllerComposer{
     private let jsonFeedFileName: String
     private let logger: Logger
     
-    public init(jsonFeedFileName: String, logger: Logger = FeedLogger()) {
+    public init(jsonFeedFileName: String, logger: Logger) {
         self.jsonFeedFileName = jsonFeedFileName
         self.logger = logger
     }
