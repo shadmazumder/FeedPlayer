@@ -12,9 +12,11 @@ import FeediOS
 
 struct FeedsViewControllerComposer{
     private let jsonFeedFileName: String
+    private let logger: Logger
     
-    init(jsonFeedFileName: String) {
+    init(jsonFeedFileName: String, logger: Logger = FeedLogger()) {
         self.jsonFeedFileName = jsonFeedFileName
+        self.logger = logger
     }
     
     func feedItemViewController() -> FeedsViewController{
@@ -29,13 +31,15 @@ struct FeedsViewControllerComposer{
     }()
     
     private func configure(_ feedsViewController: FeedsViewController){
-        configureLocalLoader(for: feedsViewController)
+        configureLocalLoader(for: feedsViewController, logErrorOn: logger)
     }
     
-    private func configureLocalLoader(for feedsViewController: FeedsViewController){
+    private func configureLocalLoader(for feedsViewController: FeedsViewController, logErrorOn logger: Logger){
         let failableLoader = makeFailableLocalLoader()
         if let loader = failableLoader.localLoader {
             feedsViewController.loader = loader
+        }else{
+            logger.logMessage(failableLoader.errorMessage)
         }
     }
     
@@ -48,17 +52,35 @@ struct FeedsViewControllerComposer{
     }
 }
 
+struct FeedLogger: Logger {
+    func logMessage(_ message: String?) {}
+}
+
 class ViewControllerComposerTests: XCTestCase {
     func test_invalidFeedJsonPath_doesNotInitiateLoader() {
-        let invalidJsonFileName = ""
-        let (_, feedViewController) = makeSUT(invalidJsonFileName)
+        let (_, feedViewController) = makeSUT(anyInvalidJsonFileName)
         XCTAssertNil(feedViewController.loader)
     }
     
+    func test_invalidFeedJsonPath_logsError() {
+        let logger = LoggerSpy()
+        let (_, _) = makeSUT(anyInvalidJsonFileName, logger: logger)
+        XCTAssertNotNil(logger.message)
+    }
+    
     // MARK: - Helper
-    private func makeSUT(_ jsonFileName: String) -> (sut: FeedsViewControllerComposer, feedsViewController: FeedsViewController){
-        let composer = FeedsViewControllerComposer(jsonFeedFileName: jsonFileName)
+    private var anyInvalidJsonFileName = ""
+    
+    private func makeSUT(_ jsonFileName: String, logger: Logger = FeedLogger()) -> (sut: FeedsViewControllerComposer, feedsViewController: FeedsViewController){
+        let composer = FeedsViewControllerComposer(jsonFeedFileName: jsonFileName, logger: logger)
         let feedViewController = composer.feedItemViewController()
         return (composer, feedViewController)
+    }
+}
+
+private class LoggerSpy: Logger{
+    var message: String?
+    func logMessage(_ message: String?) {
+        self.message = message
     }
 }
