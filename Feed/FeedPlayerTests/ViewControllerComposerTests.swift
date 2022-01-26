@@ -51,8 +51,14 @@ struct FeedsViewControllerComposer{
 class ViewControllerComposerTests: XCTestCase {
     func test_invalidFeedJsonPath_doesNotInitiateLoader() {
         let invalidJsonFileName = ""
-        let composer = FeedsViewControllerComposer(jsonFeedFileName: invalidJsonFileName)
-        let feedViewController = composer.feedItemViewController()
+        let (_, feedViewController) = makeSUT(invalidJsonFileName)
         XCTAssertNil(feedViewController.loader)
+    }
+    
+    // MARK: - Helper
+    private func makeSUT(_ jsonFileName: String) -> (sut: FeedsViewControllerComposer, feedsViewController: FeedsViewController){
+        let composer = FeedsViewControllerComposer(jsonFeedFileName: jsonFileName)
+        let feedViewController = composer.feedItemViewController()
+        return (composer, feedViewController)
     }
 }
