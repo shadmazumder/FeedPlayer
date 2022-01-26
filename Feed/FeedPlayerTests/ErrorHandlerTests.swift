@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import FeediOS
+
 import FeedPlayer
 
 class ErrorHandlerTests: XCTestCase {

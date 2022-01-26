@@ -6,9 +6,9 @@
 //
 
 import XCTest
-import FeedPlayer
-import Feed
+
 import FeediOS
+import FeedPlayer
 
 class ViewControllerComposerTests: XCTestCase {
     func test_invalidFeedJsonPath_doesNotInitiateLoader() {
