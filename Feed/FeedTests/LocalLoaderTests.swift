@@ -101,6 +101,8 @@ class LocalLoaderTests: XCTestCase {
     private func makeSUT(_ uri: String = "") -> (sut: LocalLoader, client: FeedClientSpy){
         let client = FeedClientSpy()
         let sut = LocalLoader(uri: uri, client: client, feedGenerator: feedGenerator)
+        trackMemoryLeak(sut)
+        trackMemoryLeak(client)
         return (sut, client)
     }
     

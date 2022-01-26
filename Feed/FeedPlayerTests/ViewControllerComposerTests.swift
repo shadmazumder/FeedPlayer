@@ -14,7 +14,7 @@ struct ResourcePaths {
     static let feedsJsonFile = "JSONFeeds"
 }
 
-struct FeedsViewControllerComposer{
+class FeedsViewControllerComposer{
     private let jsonFeedFileName: String
     private let logger: Logger
     

@@ -15,6 +15,9 @@ extension XCTestCase{
         let sut = launchesViewControllerFromFeedsSotyboard() as! FeedsViewController
         sut.loader = LocalLoader(uri: uri, client: clientSpy, feedGenerator: FeedGenerator())
         
+        trackMemoryLeak(sut)
+        trackMemoryLeak(clientSpy)
+        
         return (sut, clientSpy)
     }
     
