@@ -35,6 +35,8 @@ struct FeedsViewControllerComposer{
     }()
     
     private func configure(_ feedsViewController: FeedsViewController){
+        feedsViewController.playerDelegate = FeedPlayer(feedLoagger: logger)
+//        feedsViewController.errorHandler = FeedsErrorHandler
         configureLocalLoader(for: feedsViewController, logErrorOn: logger)
     }
     
@@ -60,6 +62,17 @@ struct FeedsViewControllerComposer{
 
 struct FeedLogger: Logger {
     func logMessage(_ message: String?) {}
+}
+
+import AVFoundation
+
+struct FeedPlayer: PlayerDelegate {
+    var feedLoagger: Logger
+    var player: AVPlayer{ AVPlayer() }
+    
+    func logMessage(_ message: String?) {
+        feedLoagger.logMessage(message)
+    }
 }
 
 class ViewControllerComposerTests: XCTestCase {

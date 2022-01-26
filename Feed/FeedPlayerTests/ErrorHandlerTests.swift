@@ -9,7 +9,11 @@ import XCTest
 import FeediOS
 
 class FeedErrorHandler: FeedsViewControllerErrorDelegate {
-    private weak var presentingViewController: UIViewController?
+    private var presentingViewController: UIViewController?
+    
+    init(presentingViewController: UIViewController) {
+        self.presentingViewController = presentingViewController
+    }
     
     var errorState: Error?{
         didSet{
@@ -21,4 +25,23 @@ class FeedErrorHandler: FeedsViewControllerErrorDelegate {
 }
 
 class ErrorHandlerTests: XCTestCase {
+    func test_alertIsDelivers_onErrorState() {
+        let viewController = ViewControllerSpy()
+        viewController.loadViewIfNeeded()
+        
+        let feedErrorHandler = FeedErrorHandler(presentingViewController: viewController)
+        
+        feedErrorHandler.errorState = NSError(domain: "any-domain", code: 0)
+        
+        let presentingViewController = viewController.viewControllerToPresent
+        XCTAssertTrue(presentingViewController is UIAlertController)
+    }
+}
+
+private class ViewControllerSpy: UIViewController{
+    var viewControllerToPresent: UIViewController? = nil
+    
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        self.viewControllerToPresent = viewControllerToPresent
+    }
 }
