@@ -10,6 +10,10 @@ import UIKit
 import Feed
 import FeediOS
 
+struct ResourcePaths {
+    static let feedsJsonFile = "JSONFeeds"
+}
+
 struct FeedsViewControllerComposer{
     private let jsonFeedFileName: String
     private let logger: Logger
@@ -68,6 +72,11 @@ class ViewControllerComposerTests: XCTestCase {
         let logger = LoggerSpy()
         let (_, _) = makeSUT(anyInvalidJsonFileName, logger: logger)
         XCTAssertNotNil(logger.message)
+    }
+    
+    func test_ResourcesPaths_providesValidFeedsJsonFileName() {
+        let feedsJsonFileName = ResourcePaths.feedsJsonFile
+        XCTAssertNotNil(Bundle.main.path(forResource: feedsJsonFileName, ofType: ".json"))
     }
     
     // MARK: - Helper
