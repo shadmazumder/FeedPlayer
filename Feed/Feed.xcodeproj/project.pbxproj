@@ -250,11 +250,11 @@
 				A102D47727A154F4004F4106 /* Feeds */,
 				A102D43227A08098004F4106 /* AppDelegate.swift */,
 				A102D43427A08098004F4106 /* SceneDelegate.swift */,
+				A102D48127A158C1004F4106 /* ResourcePaths.swift */,
 				A102D46927A11583004F4106 /* JSONFeeds.json */,
 				A102D43B27A0809D004F4106 /* Assets.xcassets */,
 				A102D43D27A0809D004F4106 /* LaunchScreen.storyboard */,
 				A102D44027A0809D004F4106 /* Info.plist */,
-				A102D48127A158C1004F4106 /* ResourcePaths.swift */,
 			);
 			path = FeedPlayer;
 			sourceTree = "<group>";
@@ -281,10 +281,10 @@
 		A102D47727A154F4004F4106 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
-				A102D47527A14DAA004F4106 /* FeedErrorHandler.swift */,
+				A102D48327A1592D004F4106 /* FeedsViewControllerComposer.swift */,
 				A102D47827A15545004F4106 /* FeedLogger.swift */,
 				A102D47C27A15620004F4106 /* FeedPlayer.swift */,
-				A102D48327A1592D004F4106 /* FeedsViewControllerComposer.swift */,
+				A102D47527A14DAA004F4106 /* FeedErrorHandler.swift */,
 			);
 			path = Feeds;
 			sourceTree = "<group>";
