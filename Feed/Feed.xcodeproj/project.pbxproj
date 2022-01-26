@@ -239,7 +239,7 @@
 		A102D43127A08098004F4106 /* FeedPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				A102D47427A14D98004F4106 /* ErrorHandler */,
+				A102D47727A154F4004F4106 /* Feeds */,
 				A102D43227A08098004F4106 /* AppDelegate.swift */,
 				A102D43427A08098004F4106 /* SceneDelegate.swift */,
 				A102D43627A08098004F4106 /* ViewController.swift */,
@@ -269,12 +269,12 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		A102D47427A14D98004F4106 /* ErrorHandler */ = {
+		A102D47727A154F4004F4106 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
 				A102D47527A14DAA004F4106 /* FeedErrorHandler.swift */,
 			);
-			path = ErrorHandler;
+			path = Feeds;
 			sourceTree = "<group>";
 		};
 		A1D4EF3D27A03A96001BB09E /* Helper */ = {
