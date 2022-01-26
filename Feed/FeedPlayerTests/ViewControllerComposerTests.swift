@@ -23,7 +23,7 @@ struct FeedsViewControllerComposer{
         self.logger = logger
     }
     
-    func feedItemViewController() -> FeedsViewController{
+    var feedsViewController: FeedsViewController{
         let feedsViewController = feedStoryboard.instantiateInitialViewController() as! FeedsViewController
         defer{ configure(feedsViewController) }
         return feedsViewController
@@ -81,12 +81,6 @@ class ViewControllerComposerTests: XCTestCase {
     
     // MARK: - Helper
     private var anyInvalidJsonFileName = ""
-    
-    private func makeSUT(_ jsonFileName: String, logger: Logger = FeedLogger()) -> (sut: FeedsViewControllerComposer, feedsViewController: FeedsViewController){
-        let composer = FeedsViewControllerComposer(jsonFeedFileName: jsonFileName, logger: logger)
-        let feedViewController = composer.feedItemViewController()
-        return (composer, feedViewController)
-    }
 }
 
 private class LoggerSpy: Logger{
