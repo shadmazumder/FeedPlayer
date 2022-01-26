@@ -9,7 +9,7 @@ import UIKit
 import FeediOS
 
 public class FeedErrorHandler: FeedsViewControllerErrorDelegate {
-    private var presentingViewController: UIViewController?
+    private weak var presentingViewController: UIViewController?
     
     public init(presentingViewController: UIViewController) {
         self.presentingViewController = presentingViewController

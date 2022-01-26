@@ -35,9 +35,8 @@ class FeedsViewControllerComposer{
     }()
     
     private func configure(_ feedsViewController: FeedsViewController){
-//        feedsViewController.playerDelegate = FeedPlayer(feedLoagger: logger)
-//        let erroHandler = FeedErrorHandler(presentingViewController: feedsViewController)
-//        feedsViewController.errorHandler = erroHandler
+        feedsViewController.playerDelegate = FeedPlayer(feedLoagger: logger)
+        feedsViewController.errorHandler = FeedErrorHandler(presentingViewController: feedsViewController)
         configureLocalLoader(for: feedsViewController, logErrorOn: logger)
     }
     
@@ -91,6 +90,13 @@ class ViewControllerComposerTests: XCTestCase {
     func test_ResourcesPaths_providesValidFeedsJsonFileName() {
         let feedsJsonFileName = ResourcePaths.feedsJsonFile
         XCTAssertNotNil(Bundle.main.path(forResource: feedsJsonFileName, ofType: ".json"))
+    }
+    
+    func test_composer_composesFeedsViewController() {
+        let (_ , feedViewController) = makeSUT(ResourcePaths.feedsJsonFile)
+        XCTAssertNotNil(feedViewController.playerDelegate)
+        XCTAssertNotNil(feedViewController.loader)
+        XCTAssertNotNil(feedViewController.errorHandler)
     }
     
     // MARK: - Helper
