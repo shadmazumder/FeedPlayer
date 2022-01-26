@@ -7,22 +7,7 @@
 
 import XCTest
 import FeediOS
-
-class FeedErrorHandler: FeedsViewControllerErrorDelegate {
-    private var presentingViewController: UIViewController?
-    
-    init(presentingViewController: UIViewController) {
-        self.presentingViewController = presentingViewController
-    }
-    
-    var errorState: Error?{
-        didSet{
-            let alert = UIAlertController(title: "Oops!!!", message: "Sorry, we messed up!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-            presentingViewController?.present(alert, animated: true)
-        }
-    }
-}
+import FeedPlayer
 
 class ErrorHandlerTests: XCTestCase {
     func test_alertIsDelivers_onErrorState() {

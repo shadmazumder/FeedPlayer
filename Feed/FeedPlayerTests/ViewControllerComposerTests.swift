@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import UIKit
+import FeedPlayer
 import Feed
 import FeediOS
 
@@ -35,8 +35,9 @@ class FeedsViewControllerComposer{
     }()
     
     private func configure(_ feedsViewController: FeedsViewController){
-        feedsViewController.playerDelegate = FeedPlayer(feedLoagger: logger)
-//        feedsViewController.errorHandler = FeedsErrorHandler
+//        feedsViewController.playerDelegate = FeedPlayer(feedLoagger: logger)
+//        let erroHandler = FeedErrorHandler(presentingViewController: feedsViewController)
+//        feedsViewController.errorHandler = erroHandler
         configureLocalLoader(for: feedsViewController, logErrorOn: logger)
     }
     
