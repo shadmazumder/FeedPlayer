@@ -17,7 +17,7 @@ public class FeedsViewController: UIViewController {
     public var playerDelegate: PlayerDelegate?
     
     public var loader: Loader?
-    public weak var errorHandler: FeedsViewControllerErrorDelegate?
+    public var errorHandler: FeedsViewControllerErrorDelegate?
   
     public private(set) lazy var dataSource: UITableViewDiffableDataSource<Int, FeedViewModel> = {
         .init(tableView: feedTableView) { [weak self] (_, _, feed) in

@@ -77,17 +77,6 @@ class FeedsViewControllerTests: XCTestCase {
         
         return (sut, client)
     }
-    
-    func test_noRetainCycle_btweenViewControllerAndErrorHandler() {
-        let (sut, _) = makeSUT()
-        var feedErrorHandler: FeedsErrorHandler? = FeedsErrorHandler()
-        sut.errorHandler = feedErrorHandler
-        feedErrorHandler?.errorState = NSError(domain: "any-domain", code: 0)
-        
-        feedErrorHandler = nil
-        
-        XCTAssertNil(sut.errorHandler)
-    }
 }
 
 private class FeedsErrorHandler: FeedsViewControllerErrorDelegate{
