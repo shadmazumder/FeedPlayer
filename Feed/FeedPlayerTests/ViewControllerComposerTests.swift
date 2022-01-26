@@ -60,10 +60,6 @@ class FeedsViewControllerComposer{
     }
 }
 
-struct FeedLogger: Logger {
-    func logMessage(_ message: String?) {}
-}
-
 import AVFoundation
 
 struct FeedPlayer: PlayerDelegate {

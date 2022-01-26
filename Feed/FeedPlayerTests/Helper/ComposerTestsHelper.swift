@@ -7,6 +7,7 @@
 
 import XCTest
 import FeediOS
+import FeedPlayer
 
 extension XCTestCase{
     func makeSUT(_ jsonFileName: String, logger: Logger = FeedLogger()) -> (sut: FeedsViewControllerComposer, feedsViewController: FeedsViewController){
